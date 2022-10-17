@@ -1,11 +1,17 @@
 ## Data source: 
 ### Title: Singapore Govenrment Data on the Environment
 surface-air-temperature-monthly-mean
+
 surface-air-temperature-monthly-absolute-extreme-minimum
+
 air-temperature-absolute-extremes-maximum
+
 relative-humidity-monthly-mean
+
 rainfall-monthly-total
+
 sunshine-duration-monthly-mean-daily-duration
+
 ### Agency: 
 Government of Singapore
 ### Location:
@@ -22,6 +28,6 @@ Visualizing the changes might motivate people to take climate change more seriou
 ## Potential data points
 Potential data points include data on surface air temperature (mean, max, and min), humidity levels, amount of rainfall, and sunshine duration.
 ## Any concerns about the data
-I am concerned that the data might not paint a comprehensive picture of how climate in Singapore has changed.
+I am concerned that there not be clear patterns in the data based on the visualization that is prepared on the landing page for the datasets; but I also think this underscores the need to do a better visualization as the climate in Singapore has definitely changed due to global warning and the visualizations should reflect this reality.
 ## Identify if source is primary or secondary
 Data is a primary source.
