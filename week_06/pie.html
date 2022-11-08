@@ -14,29 +14,17 @@
             font-family: Arial, Helvetica, sans-serif;
             font-size: 10px;
         }
-        .container {
-            max-width: 1040px;
-        }
-        /*.chart {
-            max-width: 1040px;
-        }*/
-        .legend {
-            max-width: 100px;
-        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>People Shot by Police by Race and Gender</h1>
-        <p>This bar chart uses data from the Washington Post on people who were shot and killed by policy officers in 2015. 
+    <div id="container">
+        <h1>People Shot by Police by State</h1>
+        <p>This pie chart uses data from the Washington Post on people who were shot and killed by policy officers in 2015. 
           <a href="https://github.com/tiffanyfrance/CAPP30239_FA22/blob/main/week_06/a3cleanedonly2015.json">Source</a>
         </p>
-        <div id="chart"></div>
-        <div id="legend"></div>
-       
+       <div id="chart"></div>
       </div>
       <script src="https://d3js.org/d3.v7.min.js"></script>
-      <script src="d3-color-legend.js"></script>
-      <script src="bar_race_gender.js"></script>
+      <script src="pie.js"></script>
 </body>
 </html>
