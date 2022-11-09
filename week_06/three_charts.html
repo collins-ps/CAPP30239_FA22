@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Police Shootings</title>
+    <style>
+        svg {
+            width: 100%;
+            height: 100vh;
+        }
+        text {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 10px;
+        }
+        .container {
+            max-width: 1040px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Police Shootings in 2015</h1>
+        <p>I created three charts: a stacked bar chart of people shot by race and by gender, a beeswam plot of their ages, and a stacked bar chart by state and whether or not person was armed.</p>
+        <p>
+        The first bar illustrates the two demographic factors that are most skewed when it comes to police shootings: race and gender. 
+        The limitation of this graph is that it is not scaled to the demographic breakdown in the population, 
+        so it does not clearly illustrate how police shootings disproportionately affect males from minority races. 
+        Incorporating supplementary demographic information on the population would improve the graph significantly. 
+         </p>
+         <p>
+        The second beeswarm chart illustrates the age distribution of people shot by the police. What is most striking about this plot 
+        are the anomalous data points: those who were very young, and those who were very old. 
+        Supplementary information to filter the plot by demographic factors such as race and gender could add further insights.
+        </p>
+        <p>
+        The third bar chart illustrates the two demographic factors that are most skewed when it comes to police shootings: race and gender. 
+        The limitation of this graph is that it is not scaled to the demographic breakdown in the population, 
+        so it does not clearly illustrate how police shootings disproportionately affect males from minority races. 
+        Incorporating supplementary demographic information on the population would improve the graph significantly.  
+        </p>
+        <p>
+        Data for all charts were taken from the Washington Post.
+        <a href="https://github.com/tiffanyfrance/CAPP30239_FA22/blob/main/week_06/a3cleanedonly2015.json">Data source</a>
+        </p>
+        <div id="chart"></div>
+       
+      </div>
+      <script src="https://d3js.org/d3.v7.min.js"></script>
+      <script src="bar_race_gender.js"></script>
+      <script src="beeswarm.js"></script>
+      <script src="bar_state_armed.js"></script>
+</body>
+</html>

@@ -14,25 +14,38 @@
             font-family: Arial, Helvetica, sans-serif;
             font-size: 10px;
         }
-        .container {
+        /*.container {
             max-width: 1040px;
         }
-        /*.chart {
+        .chart {
             max-width: 1040px;
-        }*/
+        }
         .legend {
             max-width: 100px;
+        }*/
+        #chart {
+            max-width: 1040px;
+        }
+        #legend {
+            max-width: 200px;
+            /*margin: 200px 0px 50px;*/
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>People Shot by Police by Race and Gender</h1>
-        <p>This bar chart uses data from the Washington Post on people who were shot and killed by policy officers in 2015. 
-          <a href="https://github.com/tiffanyfrance/CAPP30239_FA22/blob/main/week_06/a3cleanedonly2015.json">Source</a>
+        <p>This bar chart uses data from the Washington Post on people who were shot and killed by policy officers in 2015.
+        It illustrates the two demographic factors that are most skewed when it comes to police shootings: race and gender. 
+        The limitation of this graph is that it is not scaled to the demographic breakdown in the population, 
+        so it does not clearly illustrate how police shootings disproportionately affect males from minority races. 
+        Incorporating supplementary demographic information on the population would improve the graph significantly.  
+        <a href="https://github.com/tiffanyfrance/CAPP30239_FA22/blob/main/week_06/a3cleanedonly2015.json">Data source</a>
         </p>
         <div id="chart"></div>
         <div id="legend"></div>
+        
+        
        
       </div>
       <script src="https://d3js.org/d3.v7.min.js"></script>

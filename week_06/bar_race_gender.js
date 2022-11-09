@@ -43,7 +43,7 @@ d3.json("a3cleanedonly2015.json").then(data => {
           width = 800,
           margin = ({ top: 25, right: 30, bottom: 35, left: 50 }); */
 
-    d3.select("#legend")
+    /*d3.select("#legend")
     .node()
     .appendChild(
     Legend(
@@ -52,7 +52,7 @@ d3.json("a3cleanedonly2015.json").then(data => {
             d3.schemeSpectral[genders.length]
         ),
         { title: "Gender" }
-    ));
+    ));*/
 
     let chart = StackedBarChart(newData, {
         x: d => d.race,
