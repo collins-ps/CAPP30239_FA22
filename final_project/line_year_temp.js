@@ -22,7 +22,7 @@ d3.csv('sg_weather_year.csv').then(data => {
         .range([margin.left, width - margin.right]);
 
     let y = d3.scaleLinear()
-        .domain([26,d3.max(data, d => d.max_temperature)]).nice() // nice to round up axis tick
+        .domain([0,d3.max(data, d => d.max_temperature)]).nice() // nice to round up axis tick
         .range([height - margin.bottom, margin.top]);
     
     svg.append("g")
@@ -76,5 +76,17 @@ d3.csv('sg_weather_year.csv').then(data => {
         .attr("d", line_max)
         .attr("fill", "none")
         .attr("stroke", "orange"); 
+
+    d3.select("#legend")
+      .node()
+      .appendChild(
+        Legend(
+          d3.scaleOrdinal(
+            ["Max temperature", "Mean temperature"],
+            (['orange', 'steelblue'])
+            // (d3.schemePuOr[9]) // Alternative color scheme https://observablehq.com/@d3/color-schemes
+          ),
+          { title: "Indicator" }
+        ));
 
   });

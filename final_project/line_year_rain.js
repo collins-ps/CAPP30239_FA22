@@ -77,4 +77,15 @@ d3.csv('sg_weather_year.csv').then(data => {
         .attr("fill", "none")
         .attr("stroke", "orange");
 
+    d3.select("#legend")
+    .node()
+    .appendChild(
+      Legend(
+        d3.scaleOrdinal(
+          ["Total rainfall", "Max rainfall in a day"],
+          (['steelblue', 'orange'])
+          // (d3.schemePuOr[9]) // Alternative color scheme https://observablehq.com/@d3/color-schemes
+        ),
+        { title: "Indicator" }
+      ));
   });

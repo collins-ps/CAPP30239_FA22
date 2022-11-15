@@ -41,9 +41,15 @@ d3.csv('sg_weather.csv').then(data => {
         .tickSize(-width + margin.right + margin.left) // modified to meet at end of axis
       );
 
-    svg.append("g")
+    svg
+      .append("g")
       .attr("transform", `translate(0,${height - margin.bottom})`)
-      .call(d3.axisBottom(x).tickSizeOuter(0));
+      .call(
+        d3
+          .axisBottom(x)
+          .tickSizeOuter(0)
+          .tickFormat((d) => dayjs().month(d).format("MMM"))
+      );
 
     svg.append("text")
       .attr("class", "x-label")
@@ -74,7 +80,7 @@ d3.csv('sg_weather.csv').then(data => {
           .datum(data1)
           .attr("d", line)
           .attr("fill", "none")
-          .attr("stroke", "steelblue");
+          .attr("stroke", "red");
     }
 
     for (let i = 1990; i < 2000; i++) {
@@ -88,7 +94,7 @@ d3.csv('sg_weather.csv').then(data => {
           .datum(data1)
           .attr("d", line)
           .attr("fill", "none")
-          .attr("stroke", "green");
+          .attr("stroke", "orange");
     }
     
     for (let i = 2000; i < 2010; i++) {
@@ -116,7 +122,7 @@ d3.csv('sg_weather.csv').then(data => {
           .datum(data1)
           .attr("d", line)
           .attr("fill", "none")
-          .attr("stroke", "orange");
+          .attr("stroke", "green");
     }
 
     for (let i = 2020; i < 2023; i++) {
@@ -130,6 +136,19 @@ d3.csv('sg_weather.csv').then(data => {
           .datum(data1)
           .attr("d", line)
           .attr("fill", "none")
-          .attr("stroke", "red");
+          .attr("stroke", "blue");
     }
+
+    d3.select("#legend")
+    .node()
+    .appendChild(
+      Legend(
+        d3.scaleOrdinal(
+          ["1980", "1990", "2000", "2010", "2020"],
+          (['red', 'orange', 'yellow', 'green', 'blue'])
+          // (d3.schemePuOr[9]) // Alternative color scheme https://observablehq.com/@d3/color-schemes
+        ),
+        { title: "Decade" }
+      ));
+
   });
