@@ -17,6 +17,8 @@ d3.csv('sg_weather_year.csv').then(data => {
         d.year = timeParse(d.year); // using timeParse function we created above
     }
 
+    console.log(data)
+    
     let x = d3.scaleTime()
         .domain(d3.extent(data, d => d.year)) // returns an array
         .range([margin.left, width - margin.right]);
