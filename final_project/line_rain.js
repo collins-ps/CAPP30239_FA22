@@ -1,10 +1,9 @@
-/* D3 Line Chart */
-
+(function line_rain(){
 const height = 500,
     width = 800,
     margin = ({ top: 15, right: 30, bottom: 35, left: 40 });
     
-const svg = d3.select("#chart")
+const svg = d3.select("#chart_line_rain")
     .append("svg")
     .attr("viewBox", [0, 0, width, height]);
 
@@ -139,7 +138,7 @@ d3.csv('sg_weather.csv').then(data => {
           .attr("stroke", "blue");
     }
 
-    d3.select("#legend")
+    d3.select("#legend_line_rain")
     .node()
     .appendChild(
       Legend(
@@ -152,3 +151,5 @@ d3.csv('sg_weather.csv').then(data => {
       ));
 
   });
+
+})();

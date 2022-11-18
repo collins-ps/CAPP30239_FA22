@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heatmap Visualization</title>
+    <title>Box Plot Visualization</title>
     <style>
         svg{
             width: 100%;
-            max-height: 1040px; 
+            max-height: 600px; 
         }
         text {
             font-family: Arial, Helvetica, sans-serif;
@@ -21,7 +21,7 @@
     <div id="container">
         
         <h1>Total Rainfall</h1>
-       <div id="chart_heat_map"></div>
+       <div id="chart_box_plot_decade"></div>
        <p>
         <a href="https://github.com/tiffanyfrance/CAPP30239_FA22/blob/main/week_06/a3cleanedonly2015.json">Data source</a>
       </p>
@@ -29,7 +29,6 @@
       <script src="https://d3js.org/d3.v7.min.js"></script>
       <script src="d3-color-legend.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-      <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-      <script src="heat_map.js"></script>
+      <script src="box_plot_decade.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
   height = 500 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-const svg = d3.select("#chart_heat_map")
+const svg = d3.select("#chart_heat_map_decade")
 .append("svg")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
@@ -30,7 +30,7 @@ d3.csv("sg_weather.csv").then(data => {
 
   // Labels of row and columns -> unique identifier of the column called 'group' and 'variable'
   const myGroups = Array.from(new Set(data.map(d => d.Month)))
-  const myVars = Array.from(new Set(data.map(d => d.Year)))
+  const myVars = Array.from(new Set(data.map(d => d.Decade)))
 
   // Build X scales and axis:
   const x = d3.scaleBand()
@@ -93,10 +93,10 @@ d3.csv("sg_weather.csv").then(data => {
 
   // add the squares
   svg.selectAll()
-    .data(data, function(d) {return d.Month+':'+d.Year;})
+    .data(data, function(d) {return d.Month+':'+d.Decade;})
     .join("rect")
       .attr("x", function(d) { return x(d.Month) })
-      .attr("y", function(d) { return y(d.Year) })
+      .attr("y", function(d) { return y(d.Decade) })
       .attr("rx", 4)
       .attr("ry", 4)
       .attr("width", x.bandwidth() )

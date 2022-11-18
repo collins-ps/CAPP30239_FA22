@@ -1,10 +1,9 @@
-/* D3 Line Chart */
-
-const height = 500,
+(function line_year_temp(){
+  const height = 500,
     width = 800,
     margin = ({ top: 15, right: 30, bottom: 35, left: 40 });
     
-const svg = d3.select("#chart")
+const svg = d3.select("#chart_line_year_temp")
     .append("svg")
     .attr("viewBox", [0, 0, width, height]);
 
@@ -24,7 +23,7 @@ d3.csv('sg_weather_year.csv').then(data => {
         .range([margin.left, width - margin.right]);
 
     let y = d3.scaleLinear()
-        .domain([0,d3.max(data, d => d.max_temperature)]).nice() // nice to round up axis tick
+        .domain([25,d3.max(data, d => d.max_temperature)]).nice() // nice to round up axis tick
         .range([height - margin.bottom, margin.top]);
     
     svg.append("g")
@@ -79,7 +78,7 @@ d3.csv('sg_weather_year.csv').then(data => {
         .attr("fill", "none")
         .attr("stroke", "orange"); 
 
-    d3.select("#legend")
+    d3.select("#legend_line_year_temp")
       .node()
       .appendChild(
         Legend(
@@ -92,3 +91,4 @@ d3.csv('sg_weather_year.csv').then(data => {
         ));
 
   });
+})();

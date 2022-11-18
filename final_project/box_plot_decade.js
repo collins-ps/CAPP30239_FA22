@@ -18,7 +18,7 @@ d3.csv("sg_weather.csv").then(data => {
     console.log(data)
 
     let chart = BoxPlot(data, {
-        x: d => d.Year,
+        x: d => d.Decade,
         y: d => d.total_rainfall,
         xLabel: "Year →",
         yLabel: "↑ Total Rainfall",
@@ -26,7 +26,7 @@ d3.csv("sg_weather.csv").then(data => {
         height: 500
       })
 
-    document.getElementById("chart_box_plot").appendChild(chart);
+    document.getElementById("chart_box_plot_decade").appendChild(chart);
 
 });
 
@@ -51,7 +51,7 @@ function BoxPlot(data, {
     yType = d3.scaleLinear, // type of y-scale
     yDomain, // [ymin, ymax]
     yRange = [height - marginBottom, marginTop], // [bottom, top]
-    thresholds = width / 25, // approximative number of thresholds
+    thresholds = width / 150, // approximative number of thresholds
     stroke = "currentColor", // stroke color of whiskers, median, outliers
     fill = "#ddd", // fill color of boxes
     jitter = 4, // amount of random jitter for outlier dots, in pixels

@@ -1,7 +1,4 @@
-// Copyright 2021 Observable, Inc.
-// Released under the ISC license.
-// https://observablehq.com/@d3/stacked-bar-chart
-
+(function beeswarm_temp(){
 d3.csv("sg_weather.csv").then(data => {
 
     console.log(data)
@@ -23,21 +20,22 @@ d3.csv("sg_weather.csv").then(data => {
 
     console.log(data)
 
+    
     let chart_max = BeeswarmChart(data, {
         x: d => d.max_temperature,
-        group: d => d.Decade, // is this correct? */
+        group: d => d.Decade, 
         label: "Maximum Temperature (C)→",
         type: d3.scaleLinear, // try d3.scaleLog
-        title: d => `${d.Year}: ${d.Month}\n${d.maximum_rainfall_in_a_day.toLocaleString("en")} C.`,
+        title: d => `${d.Year}: ${d.Month}\n${d.max_temperature.toLocaleString("en")} C.`,
         width: 2000,
         marginTop: 150,
       });
 
     document.getElementById("chart_max").appendChild(chart_max);
-
+    /* 
     let chart_min = BeeswarmChart(data, {
         x: d => d.temp_extremes_min,
-        group: d => d.Decade, // is this correct? */
+        group: d => d.Decade, 
         label: "Minimum Temperature (C)→",
         type: d3.scaleLinear, // try d3.scaleLog
         title: d => `${d.Year}: ${d.Month}\n${d.temp_extremes_min.toLocaleString("en")} C.`,
@@ -45,7 +43,7 @@ d3.csv("sg_weather.csv").then(data => {
         marginTop: 150,
       });
 
-    document.getElementById("chart_min").appendChild(chart_min);
+    document.getElementById("chart_min").appendChild(chart_min); */ 
 
     let chart_mean = BeeswarmChart(data, {
         x: d => d.mean_temp,
@@ -59,7 +57,7 @@ d3.csv("sg_weather.csv").then(data => {
 
     document.getElementById("chart_mean").appendChild(chart_mean);
 
-    d3.select("#legend")
+    d3.select("#legend_beeswarm_temp")
         .node()
         .appendChild(
         Legend(
@@ -197,3 +195,5 @@ function BeeswarmChart(data, {
 
     return svg.node();
 }
+
+})();

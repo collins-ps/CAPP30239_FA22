@@ -1,10 +1,10 @@
-/* D3 Line Chart */
+(function line_year_rain(){
 
 const height = 500,
     width = 800,
     margin = ({ top: 15, right: 30, bottom: 35, left: 40 });
     
-const svg = d3.select("#chart")
+const svg = d3.select("#chart_line_year_rain")
     .append("svg")
     .attr("viewBox", [0, 0, width, height]);
 
@@ -79,7 +79,7 @@ d3.csv('sg_weather_year.csv').then(data => {
         .attr("fill", "none")
         .attr("stroke", "orange");
 
-    d3.select("#legend")
+    d3.select("#legend_line_year_rain")
     .node()
     .appendChild(
       Legend(
@@ -91,3 +91,5 @@ d3.csv('sg_weather_year.csv').then(data => {
         { title: "Indicator" }
       ));
   });
+
+})();

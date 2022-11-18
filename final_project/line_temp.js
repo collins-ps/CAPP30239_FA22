@@ -2,9 +2,9 @@
 
 const height = 500,
     width = 800,
-    margin = ({ top: 15, right: 30, bottom: 35, left: 40 });
+    margin = ({ top: 15, right: 30, bottom: 35, left: 40 }); 
     
-const svg = d3.select("#chart")
+const svg = d3.select("#chart_line_temp")
     .append("svg")
     .attr("viewBox", [0, 0, width, height]);
 
@@ -31,7 +31,7 @@ d3.csv('sg_weather.csv').then(data => {
         .range([margin.left, width - margin.right]);
 
     let y = d3.scaleLinear()
-        .domain([31,d3.max(data, d => d.max_temperature)]).nice() // nice to round up axis tick
+        .domain([25,d3.max(data, d => d.mean_temp)]).nice() // nice to round up axis tick
         .range([height - margin.bottom, margin.top]);
     
     svg.append("g")
@@ -76,7 +76,7 @@ d3.csv('sg_weather.csv').then(data => {
 
       let line = d3.line()
           .x(d => x(d.Month))
-          .y(d => y(d.max_temperature))
+          .y(d => y(d.mean_temp))
 
       svg.append("path")
           .datum(data1)
@@ -90,7 +90,7 @@ d3.csv('sg_weather.csv').then(data => {
 
       let line = d3.line()
           .x(d => x(d.Month))
-          .y(d => y(d.max_temperature))
+          .y(d => y(d.mean_temp))
 
       svg.append("path")
           .datum(data1)
@@ -104,7 +104,7 @@ d3.csv('sg_weather.csv').then(data => {
 
       let line = d3.line()
           .x(d => x(d.Month))
-          .y(d => y(d.max_temperature))
+          .y(d => y(d.mean_temp))
 
       svg.append("path")
           .datum(data1)
@@ -118,7 +118,7 @@ d3.csv('sg_weather.csv').then(data => {
 
       let line = d3.line()
           .x(d => x(d.Month))
-          .y(d => y(d.max_temperature))
+          .y(d => y(d.mean_temp))
 
       svg.append("path")
           .datum(data1)
@@ -132,7 +132,7 @@ d3.csv('sg_weather.csv').then(data => {
 
       let line = d3.line()
           .x(d => x(d.Month))
-          .y(d => y(d.max_temperature))
+          .y(d => y(d.mean_temp))
 
       svg.append("path")
           .datum(data1)
@@ -141,7 +141,7 @@ d3.csv('sg_weather.csv').then(data => {
           .attr("stroke", "blue");
     }
 
-    d3.select("#legend")
+    d3.select("#legend_line_temp")
     .node()
     .appendChild(
       Legend(
