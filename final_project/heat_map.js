@@ -59,7 +59,7 @@ d3.csv("sg_weather.csv").then(data => {
     .domain([1,100])
 
   // create a tooltip
-  const tooltip = d3.select("#chart")
+  const tooltip = d3.select("#chart_heat_map")
     .append("div")
     .style("opacity", 0)
     .attr("class", "tooltip")
@@ -79,7 +79,7 @@ d3.csv("sg_weather.csv").then(data => {
   }
   const mousemove = function(event,d) {
     tooltip
-      .html("The exact value of<br>this cell is: " + d.total_rainfall)
+      .html("The total rainfall in " + getMonthName(d.Month) + " " + d.Year + " was: " + d.total_rainfall + " mm.")
       .style("left", (event.x)/2 + "px")
       .style("top", (event.y)/2 + "px")
   }
@@ -130,5 +130,12 @@ svg.append("text")
         .style("max-width", 400)
         .text("A short description of the take-away message of this chart.");
 */
+
+function getMonthName(monthNumber) {
+  const date = new Date();
+  date.setMonth(monthNumber);
+
+  return date.toLocaleString('en-US', { month: 'long' });
+}
 
 })();

@@ -4,7 +4,7 @@
   height = 500 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-const svg = d3.select("#chart_heat_map_temp")
+const svg = d3.select("#chart_heat_map_temp_decade")
 .append("svg")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
@@ -59,7 +59,7 @@ d3.csv("sg_weather.csv").then(data => {
     .domain([24,30])
 
   // create a tooltip
-  const tooltip = d3.select("#chart")
+  const tooltip = d3.select("#chart_heat_map_temp_decade")
     .append("div")
     .style("opacity", 0)
     .attr("class", "tooltip")
@@ -79,7 +79,7 @@ d3.csv("sg_weather.csv").then(data => {
   }
   const mousemove = function(event,d) {
     tooltip
-      .html("The exact value of<br>this cell is: " + d.mean_temp)
+      .html("The mean temperature in " + getMonthName(d.Month) + " in the " + d.Decade + "'s was: " + d.mean_temp + " C.")
       .style("left", (event.x)/2 + "px")
       .style("top", (event.y)/2 + "px")
   }
@@ -128,4 +128,13 @@ svg.append("text")
         .style("max-width", 400)
         .text("A short description of the take-away message of this chart.");
 */
+
+function getMonthName(monthNumber) {
+  const date = new Date();
+  date.setMonth(monthNumber);
+
+  return date.toLocaleString('en-US', { month: 'long' });
+}
+
 })();
+

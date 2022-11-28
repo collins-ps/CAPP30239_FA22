@@ -51,7 +51,7 @@ function BoxPlot(data, {
     yType = d3.scaleLinear, // type of y-scale
     yDomain, // [ymin, ymax]
     yRange = [height - marginBottom, marginTop], // [bottom, top]
-    thresholds = width / 150, // approximative number of thresholds
+    thresholds = width / 165, // approximative number of thresholds
     stroke = "currentColor", // stroke color of whiskers, median, outliers
     fill = "#ddd", // fill color of boxes
     jitter = 4, // amount of random jitter for outlier dots, in pixels
