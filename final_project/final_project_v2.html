@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Change</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Assistant', sans-serif;
+        }
+        .container {
+            max-width: 1000px;
+            padding: 20px;
+            margin: 0 auto;
+        }
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: normal;
+            align-items: normal;
+            align-content: normal;
+            column-gap: 40px;
+            margin: 60px 0px;
+        }
+        .flex-item {
+            display: block;
+            flex-grow: 0;
+            flex-shrink: 1;
+            flex-basis: auto;
+            align-self: auto;
+            order: 0;
+            width: 50%;
+        }
+        .float-left {
+            float:left;
+            width: 50%;
+        }
+
+        .chart p {
+            background: #eee;
+            padding: 5px 0px 5px 10px;
+            margin-right: 10px;
+        }
+
+        text {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 10px;
+        }
+        hr {
+            margin: 60px 0;
+        }
+
+        #chart_line_temp , #chart_line_year_temp , #chart_line_rain , #chart_line_year_rain , #chart_box_plot_decade, #chart_box_plot { 
+            width: 50%; 
+        }
+
+        #chart_max, #chart_mean { 
+            width: 80%; 
+        }
+
+        #chart_line_temp text, #chart_line_year_temp text , #chart_line_rain text, #chart_line_year_rain text{
+            font-size: 10px;
+        }
+
+        #chart_line_temp .y-axis path.domain, #chart_line_year_temp .y-axis path.domain, #chart_line_rain .y-axis path.domain, #chart_line_year_rain .y-axis path.domain{ 
+            display: none;  
+        }
+
+        #chart_line_temp .y-axis line, #chart_line_year_temp .y-axis line, #chart_line_rain .y-axis line, #chart_line_year_rain .y-axis line{
+            stroke: #ddd;
+            stroke-dasharray: 2;
+        } 
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            Understanding Climate Change in Singapore from 1982-2022
+        </h1>
+        <div class="flex-container">
+            <div class="flex-item">
+                <h2>
+                    Mean and maximum temperature have been steadily rising across the years.
+                </h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
+            </div>
+            <div id="chart_line_year_temp" class="flex-item chart">
+            <div id="legend_line_year_temp" class="flex-item chart"></div>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div id="chart_max" class="flex-item chart"></div>
+            <div id="chart_mean" class="flex-item chart"></div>
+            <div id="legend_beeswarm_temp" class="flex-item chart"></div>
+            <div class="flex-item">
+                <h2>
+                    While this might seem gradual, seemingly small shifts are significant when it comes to temperature. 
+                </h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div class="flex-item">
+                <h2>
+                    But, when adjusted by percentage of
+                    racial breakdown we see Black populations
+                    are disproportionately targeted
+                </h2>
+                <p>According to the <a href="https://www.census.gov/quickfacts/fact/table/US/PST045221">2020 Census</a>, White people, excluding Hispanics and Latino, make up 59.3% of the population. 13.6% of the population is Black, not Hispanic or Latino. When adjusted for these numbers, we see a disproportionate number of Black individuals shot and killed by Police.  Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
+            </div>
+            <div id="divergingChart" class="flex-item chart"></div>
+        </div>
+        <hr>
+       
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="d3-color-legend.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src="line_temp.js"></script>
+    <script src="beeswarm_temp.js"></script>
+    <script src="line_year_temp.js"></script>
+    <script src="heat_map_temp.js"></script>
+    <script src="heat_map_temp_decade.js"></script>
+    <script src="heat_map.js"></script>
+    <script src="heat_map_decade.js"></script>
+    <script src="line_rain.js"></script>
+    <script src="line_year_rain.js"></script>
+    <script src="box_plot_decade.js"></script>
+    <script src="box_plot.js"></script>
+</body>
+</html>
