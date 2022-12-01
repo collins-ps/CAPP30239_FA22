@@ -56,11 +56,15 @@
         }
 
         #chart_line_temp , #chart_line_year_temp , #chart_line_rain , #chart_line_year_rain , #chart_box_plot_decade, #chart_box_plot { 
-            width: 50%; 
+            width: 100%; 
+        }
+
+        #legend_line_year_temp { 
+            width: 1%; 
         }
 
         #chart_max, #chart_mean { 
-            width: 80%; 
+            width: 100%; 
         }
 
         #chart_line_temp text, #chart_line_year_temp text , #chart_line_rain text, #chart_line_year_rain text{
@@ -83,6 +87,9 @@
         <h1>
             Understanding Climate Change in Singapore from 1982-2022
         </h1>
+
+        <h1>Temperature</h1>
+
         <div class="flex-container">
             <div class="flex-item">
                 <h2>
@@ -91,14 +98,20 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
             </div>
-            <div id="chart_line_year_temp" class="flex-item chart">
-            <div id="legend_line_year_temp" class="flex-item chart"></div>
+            <div class="flex-container flex-item ">
+                <div id="chart_line_year_temp" class="flex-item"></div>
+                <div id="legend_line_year_temp" class="flex-item"></div>
             </div>
+            
         </div>
+
         <div class="flex-container">
-            <div id="chart_max" class="flex-item chart"></div>
-            <div id="chart_mean" class="flex-item chart"></div>
-            <div id="legend_beeswarm_temp" class="flex-item chart"></div>
+            <div class="flex-container flex-item ">
+                <div id="chart_max" class="flex-item"></div>
+                <div id="chart_mean" class="flex-item"></div>
+                <div id="legend_beeswarm_temp" class="flex-item"></div>
+            </div>
+            
             <div class="flex-item">
                 <h2>
                     While this might seem gradual, seemingly small shifts are significant when it comes to temperature. 
@@ -107,18 +120,98 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
             </div>
         </div>
+
         <div class="flex-container">
             <div class="flex-item">
                 <h2>
-                    But, when adjusted by percentage of
-                    racial breakdown we see Black populations
-                    are disproportionately targeted
+                    While there are year-to-year and month-to-month fluctuations, each decade is warmer than the last.
                 </h2>
                 <p>According to the <a href="https://www.census.gov/quickfacts/fact/table/US/PST045221">2020 Census</a>, White people, excluding Hispanics and Latino, make up 59.3% of the population. 13.6% of the population is Black, not Hispanic or Latino. When adjusted for these numbers, we see a disproportionate number of Black individuals shot and killed by Police.  Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
             </div>
-            <div id="divergingChart" class="flex-item chart"></div>
+            <div class="flex-container flex-item ">
+                <div id="chart_line_temp" class="flex-item"></div>
+                <div id="legend_line_temp" class="flex-item"></div>
+            </div>
         </div>
+
+        <div class="flex-container">
+            <div class="flex-item">
+                <h2>
+                    Every month has been getting warmer across the years.
+                </h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
+            </div>
+            <div class="flex-container flex-item ">
+                <div id="chart_heat_map_temp" class="flex-item"></div>
+                <div id="chart_heat_map_temp_decade" class="flex-item"></div>
+            </div>
+            
+        </div>
+
+        <hr>
+
+        <h1>Rainfall</h1>
+
+        <div class="flex-container">
+            <div class="flex-item">
+                <h2>
+                    Annual rainfall is significantly influenced by climate events such as El Nino and La Nina.
+                </h2>
+                <p>According to the <a href="https://www.census.gov/quickfacts/fact/table/US/PST045221">2020 Census</a>, White people, excluding Hispanics and Latino, make up 59.3% of the population. 13.6% of the population is Black, not Hispanic or Latino. When adjusted for these numbers, we see a disproportionate number of Black individuals shot and killed by Police.  Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
+            </div>
+            <div class="flex-container flex-item ">
+                <div id="chart_heat_map" class="flex-item"></div>
+                <div id="chart_heat_map_decade" class="flex-item"></div>
+            </div>
+        </div>
+
+        <div class="flex-container">
+            <div class="flex-item">
+                <h2>
+                    Without normalization, we cannot draw conclusions about the change in rainfall across the decades.
+                </h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
+            </div>
+            <div class="flex-container flex-item ">
+                <div id="chart_line_rain" class="flex-item"></div>
+                <div id="legend_line_rain" class="flex-item"></div>
+            </div>
+            
+        </div>
+
+        <div class="flex-container">
+            <div class="flex-item">
+                <h2>
+                    Without normalization, we cannot draw conclusions about the change in rainfall across the decades.
+                </h2>
+                <p>According to the <a href="https://www.census.gov/quickfacts/fact/table/US/PST045221">2020 Census</a>, White people, excluding Hispanics and Latino, make up 59.3% of the population. 13.6% of the population is Black, not Hispanic or Latino. When adjusted for these numbers, we see a disproportionate number of Black individuals shot and killed by Police.  Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
+            </div>
+            <div class="flex-container flex-item ">
+                <div id="chart_line_year_rain" class="flex-item"></div>
+                <div id="legend_line_year_rain" class="flex-item"></div>
+            </div>
+        </div>
+
+        <div class="flex-container">
+            <div class="flex-item">
+                <h2>
+                    We also cannot draw conclusions about the change in rainfall within a decade or a year.
+                </h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
+            </div>
+            <div class="flex-container flex-item ">
+                <div id="chart_box_plot_decade" class="flex-item"></div>
+                <div id="chart_box_plot" class="flex-item"></div>
+            </div>
+            
+        </div>
+
         <hr>
        
     <script src="https://d3js.org/d3.v7.min.js"></script>
