@@ -41,12 +41,6 @@
             width: 50%;
         }
 
-        .chart p {
-            background: #eee;
-            padding: 5px 0px 5px 10px;
-            margin-right: 10px;
-        }
-
         text {
             font-family: Arial, Helvetica, sans-serif;
             font-size: 12px;
@@ -59,16 +53,16 @@
             width: 100%; 
         }
 
-        #legend_line_year_temp { 
-            width: 1%; 
-        }
-
         #chart_max, #chart_mean { 
             width: 100%; 
         }
 
         #chart_line_temp text, #chart_line_year_temp text , #chart_line_rain text, #chart_line_year_rain text{
             font-size: 12px;
+        }
+
+        #chart_box_plot_decade text {
+            font-size: 15px;
         }
 
         #chart_line_temp .y-axis path.domain, #chart_line_year_temp .y-axis path.domain, #chart_line_rain .y-axis path.domain, #chart_line_year_rain .y-axis path.domain{ 
@@ -95,7 +89,7 @@
         </p>
 
         <p>
-            Singapore has tracked weather data in 28 stations across the country since 1980, with some stations tracking data from even further back. Data from the Changi station is available on the Singapore Government’s open data portal for public use. This article uses this dataset to explore how the two most important elements of Singapore’s climate, surface temperature and rainfall, have changed over the last 40 years. While the data is not complete, there is strong correlation in aggregated annual weather data between weather stations, thus the analysis is applicable for Singapore as a whole.
+            Singapore has tracked weather data in 28 stations across the country since 1980, with some stations tracking data from even further back. Data from the Changi station is available on the Singapore Government's open data portal for public use. This article uses this dataset to explore how the two most important elements of Singapore's climate, surface temperature and rainfall, have changed over the last 40 years. While the data is not complete, there is strong correlation in aggregated annual weather data between weather stations, thus the analysis is applicable for Singapore as a whole.
         </p>
 
         <p>
@@ -167,8 +161,6 @@
 
         <hr>
 
-        
-
         <h2>
             There is large variability in rainfall across measurement and timescales.
         </h2>
@@ -235,6 +227,11 @@
         </div>
 
         <hr>
+
+        <h2>Process</h2>
+        <p>This webpage was created as a final project for CAPP30239: Data Visualizaton for Policy Analysis. I decided to do my project on climate change because I believe it is the biggest existential threat of my generation. Since the effects of climate change vary geographically, I wanted to focus on my home country of Singapore specifically. The data comes from the Government of Singapore's open data portal - there was no alternative.While it would have been good to have had data from the other weather stations, the Singapore government says that data from one station is representative of all stations nation-wide.  </p>
+
+        <p> I defined my story by first diving into the data and seeing what insights it contained. I let insights from the data guide the story. I did not have ethical considerations in the story telling. I chose various types of charts that I believe best visualized the point I wanted to make. I used line charts to show trends across time. I used the beeswarm chart to show distribution. I used heatmap to give a better sense of the magnitude in the shifts and to condense 40 lines into a few boxes. Together these charts help tell the story of how climate in Singapore has changed. The key coding challenges came from debugging issues as it was my first time using javascript and html.</p>
        
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="d3-color-legend.js"></script>
