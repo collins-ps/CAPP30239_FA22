@@ -1,7 +1,7 @@
 (function heat_map(){
-  const margin = {top: 80, right: 25, bottom: 30, left: 40},
+  const margin = {top: 0, right: 25, bottom: 0, left: 40},
   width = 500 - margin.left - margin.right,
-  height = 500 - margin.top - margin.bottom;
+  height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 const svg = d3.select("#chart_heat_map")
