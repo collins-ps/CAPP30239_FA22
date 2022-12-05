@@ -141,16 +141,10 @@ d3.csv('sg_weather.csv').then(data => {
           .attr("stroke", "blue");
     }
 
-    d3.select("#legend_line_temp")
-    .node()
-    .appendChild(
-      Legend(
-        d3.scaleOrdinal(
-          ["1980", "1990", "2000", "2010", "2020"],
-          (['red', 'orange', 'yellow', 'green', 'blue'])
-          // (d3.schemePuOr[9]) // Alternative color scheme https://observablehq.com/@d3/color-schemes
-        ),
-        { title: "Decade" }
-      ));
+    let swatchHTML = Swatches(d3.scaleOrdinal(["1980", "1990", "2000", "2010", "2020"],['red', 'orange', 'yellow', 'green', 'blue']));
+
+    d3.select("#chart_line_temp")
+      .append("div")
+      .node().innerHTML = swatchHTML;
 
   });

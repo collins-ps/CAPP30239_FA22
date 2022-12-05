@@ -36,11 +36,18 @@ d3.csv("sg_weather.csv").then(data => {
     .domain(myGroups)
     .padding(0.05);
 
-  svg.append("g")
+  svg
+    .append("g")
     .style("font-size", 15)
     .attr("transform", `translate(0, ${height})`)
-    .call(d3.axisBottom(x).tickSize(0))
-    .select(".domain").remove()
+    .call(
+      d3
+        .axisBottom(x)
+        .tickSize(0)
+        .tickFormat((d) => getMonthName(d).substring(0, 3))
+    )
+    .select(".domain")
+    .remove();
 
   // Build Y scales and axis:
   const y = d3.scaleBand()
@@ -57,6 +64,12 @@ d3.csv("sg_weather.csv").then(data => {
   const myColor = d3.scaleSequential()
     .interpolator(d3.interpolateInferno)
     .domain([24,30])
+
+  d3.select("#chart_heat_map_temp")
+      .append("div")
+      .node()
+      .appendChild(Legend(myColor));
+
 
   // create a tooltip
   const tooltip = d3.select("#chart_heat_map_temp")

@@ -49,7 +49,7 @@
 
         text {
             font-family: Arial, Helvetica, sans-serif;
-            font-size: 10px;
+            font-size: 12px;
         }
         hr {
             margin: 60px 0;
@@ -68,7 +68,7 @@
         }
 
         #chart_line_temp text, #chart_line_year_temp text , #chart_line_rain text, #chart_line_year_rain text{
-            font-size: 10px;
+            font-size: 12px;
         }
 
         #chart_line_temp .y-axis path.domain, #chart_line_year_temp .y-axis path.domain, #chart_line_rain .y-axis path.domain, #chart_line_year_rain .y-axis path.domain{ 
@@ -88,97 +88,102 @@
             Understanding Climate Change in Singapore from 1982-2022
         </h1>
 
-        <h1>Temperature</h1>
+        <p>Sources: <a href="https://data.gov.sg/">Data</a>, <a href="https://ccrs.weather.gov.sg/wp-content/uploads/2015/04/Publications-Second-National-Climate-Change-Study-Report-for-Stakeholders.pdf">Research</a>, <a href="https://www.nccs.gov.sg/singapores-climate-action/impact-of-climate-change-in-singapore/">Research</a> </p>
+
+        <p>
+            Climate change is one of the largest existential threats of our generation. While the effects of climate change can be felt from all corners of the globe, they are geographically uneven, with some nations feeling its effects more significantly and immediately than others. This includes Singapore; as a low-lying island nation, Singapore is threatened by the effects of climate change over land and water. Understanding how Singapore's climate has changed and projecting future trends is key to preparing for outcomes that we hope will not materialize.   
+        </p>
+
+        <p>
+            Singapore has tracked weather data in 28 stations across the country since 1980, with some stations tracking data from even further back. Data from the Changi station is available on the Singapore Government’s open data portal for public use. This article uses this dataset to explore how the two most important elements of Singapore’s climate, surface temperature and rainfall, have changed over the last 40 years. While the data is not complete, there is strong correlation in aggregated annual weather data between weather stations, thus the analysis is applicable for Singapore as a whole.
+        </p>
+
+        <p>
+            Overall, the data clearly shows that temperature is increasing. However, the change in rainfall is unclear. These patterns apply to wet (November-January) as well as dry months (February and June-September). Unsurprisingly, while climate projection models unanimously agree that Singapore is likely to get warmer, they are divided on rainfall projections.
+        </p>
+
+        <p>
+            In studying climate change, it is important to understand that while anthropogenic activities are a key driver, there are other contributing factors. There is natural variation in the climate driven by weather events such as the El Nino Southern Oscillation and volcanic eruptions that would occur regardless of the anthropogenic influence of global warming. There are also natural modes of variability that occur on long timeframes such as the Pacific Decadal Oscillation and the Atlantic Meridional Oscillation. The magnitude of these nautral variations can be comparable to variations caused by anthropogenic global warming, making it difficult to determine key drivers of climate change. It is thus not possible to attribute causes for trends visualized below solely to anthropogenic activities. 
+        </p>
+
+        <div class="flex-container">
+            <div class="flex-container flex-item ">
+                <div id="chart_heat_map_temp_decade" class="flex-item"></div>
+            </div>
+            <div class="flex-item ">
+                <h2>Across all units of measurement and timescales, Singapore is getting warmer. </h2>
+                <p>
+                    Between 1948 to 2014, mean temperature increased at a rate of 0.25 Celsius per decade. While this might seem trivial, this is double the global trend over the same period.
+                </p>
+            </div>
+        </div>
 
         <div class="flex-container">
             <div class="flex-item">
-                <h2>
-                    Mean and maximum temperature have been steadily rising across the years.
-                </h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
+                <h2>Much of the increase is driven by human activity.</h2>
+                <p>
+                    There is a clear increasing trend in mean and maximum temperature on an annual basis too. Much of this is likely due to human activity - in their 2013 Report, the Intergovernmental Panel on Climate Change (IPCC) attributed over half of observed global trends in global warming to human activity. 
+                </p>
             </div>
             <div class="flex-container flex-item ">
                 <div id="chart_line_year_temp" class="flex-item"></div>
-                <div id="legend_line_year_temp" class="flex-item"></div>
             </div>
             
         </div>
 
         <div class="flex-container">
-            <div class="flex-container flex-item ">
-                <div id="chart_max" class="flex-item"></div>
-                <div id="chart_mean" class="flex-item"></div>
-                <div id="legend_beeswarm_temp" class="flex-item"></div>
-            </div>
-            
-            <div class="flex-item">
-                <h2>
-                    While this might seem gradual, seemingly small shifts are significant when it comes to temperature. 
-                </h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
-            </div>
-        </div>
-
-        <div class="flex-container">
-            <div class="flex-item">
-                <h2>
-                    While there are year-to-year and month-to-month fluctuations, each decade is warmer than the last.
-                </h2>
-                <p>According to the <a href="https://www.census.gov/quickfacts/fact/table/US/PST045221">2020 Census</a>, White people, excluding Hispanics and Latino, make up 59.3% of the population. 13.6% of the population is Black, not Hispanic or Latino. When adjusted for these numbers, we see a disproportionate number of Black individuals shot and killed by Police.  Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
-            </div>
             <div class="flex-container flex-item ">
                 <div id="chart_line_temp" class="flex-item"></div>
-                <div id="legend_line_temp" class="flex-item"></div>
+            </div>
+            <div class="flex-item">
+                <h2>
+                    Small shifts are significant when it comes to climate change.
+                </h2>
+                <p>
+                    While the increasing trend might seem gentle, seemingly small shifts are significant and can be catastrophic when it comes to sea levels, coral reefs, biodiversity, and ecosystems. Rising temperatures are a challenge on multiple fronts. The most immediate threat is that rising temperatures will lead to rising sea levels - between 1975 to 2009, the mean sea level in the Straits of Singapore increased by 1.2mm-1.7mm per year. This is a worrying trajectory as 30% of Singapore lies less than 5 meters above sea level, while the rest of the country is only 15 meters above sea level. Further, increasing temperature would alter ecosystems including soil formation, nutrient storage, and pollution absorption, creating a significant biodiversity risk. Another risk is diseases. Singapore is in a region where vector-borne diseases, such as dengue fever, are endemic and generally spike in warmer months. As temperatures rise, we might see an increase in life-threatening illnesses, in addition to greater prevalence of heat stress and discomfort.
+                </p>
             </div>
         </div>
 
+        <h2>
+            Distribution of temperature shows magnitude of shift.
+        </h2>
+
         <div class="flex-container">
-            <div class="flex-item">
-                <h2>
-                    Every month has been getting warmer across the years.
-                </h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
-            </div>
-            <div class="flex-container flex-item ">
-                <div id="chart_heat_map_temp" class="flex-item"></div>
-                <div id="chart_heat_map_temp_decade" class="flex-item"></div>
-            </div>
-            
+            <div id="chart_max" class="flex-item"></div>
         </div>
+
+        <p>
+            Looking at mean temperature recorded over the years as a distribution gives a better sense of the magnitude in the shift in temperature. The left tail of cooler temperatures generally comprises records from earlier decades while the right tail of warmer temperatures comprise records from more recent decades. It is worth noting that the high temperatures recorded in the 1990’s were anomalies driven by one of the strongest El Nino events in recorded history.  
+        </p>
+
+        <div class="flex-container">
+            <div id="chart_mean" class="flex-item"></div>
+        </div>
+
+        <p>
+            Given the clear historical observed data, all climate projections agree that temperature is likely to continue increasing in Singapore. Given a reference period of 1980-2009, mean temperature is predicted to increase by 2-4 Celsius by the end of the century, which is significantly higher than what is experienced today, and would have significant impact on Singapore. 
+        </p>
 
         <hr>
 
-        <h1>Rainfall</h1>
+        
+
+        <h2>
+            There is large variability in rainfall across measurement and timescales.
+        </h2>
+        <p>The question of change in rainfall is much more complicated than temperature. There is large variability in rainfall on any timescale. However, government media on climate change frequently states that rainfall is increasing. They cite that annual rainfall recorded in all weather stations rose at a rate of 15.7mm per year or 67mm per decade between 1985-2015, and there was statistically significant upward trend in rainfall recorded in 61% of weather stations. This trend would be supported by science - as temperature rises, the air can hold more moisture, and as moisture in the atmosphere increases, rainfall is likely to increase. </p>
+
+        <p>However, this can be confusing for those living in Singapore where there have been frequent drought-like conditions in recent years, with the 2010's being a particularly dry decade. Further, the data reveals a much more complicated picture as there is significant year-to-year and decade-to-decade variation. Furthermore, the government notes that rainfall generally decreased from 1950 to 1970, casting doubt on a clear trajectory in rainfall. </p>
 
         <div class="flex-container">
-            <div class="flex-item">
-                <h2>
-                    Annual rainfall is significantly influenced by climate events such as El Nino and La Nina.
-                </h2>
-                <p>According to the <a href="https://www.census.gov/quickfacts/fact/table/US/PST045221">2020 Census</a>, White people, excluding Hispanics and Latino, make up 59.3% of the population. 13.6% of the population is Black, not Hispanic or Latino. When adjusted for these numbers, we see a disproportionate number of Black individuals shot and killed by Police.  Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
-            </div>
-            <div class="flex-container flex-item ">
-                <div id="chart_heat_map" class="flex-item"></div>
-                <div id="chart_heat_map_decade" class="flex-item"></div>
-            </div>
-        </div>
-
-        <div class="flex-container">
-            <div class="flex-item">
-                <h2>
-                    Without normalization, we cannot draw conclusions about the change in rainfall across the decades.
-                </h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
-            </div>
             <div class="flex-container flex-item ">
                 <div id="chart_line_rain" class="flex-item"></div>
                 <div id="legend_line_rain" class="flex-item"></div>
+                
+            </div>
+            <div class="flex-container flex-item ">
+                <div id="chart_line_year_rain" class="flex-item"></div>
             </div>
             
         </div>
@@ -186,28 +191,45 @@
         <div class="flex-container">
             <div class="flex-item">
                 <h2>
-                    Without normalization, we cannot draw conclusions about the change in rainfall across the decades.
+                    It is also unclear what is driving variation in rainfall.
                 </h2>
-                <p>According to the <a href="https://www.census.gov/quickfacts/fact/table/US/PST045221">2020 Census</a>, White people, excluding Hispanics and Latino, make up 59.3% of the population. 13.6% of the population is Black, not Hispanic or Latino. When adjusted for these numbers, we see a disproportionate number of Black individuals shot and killed by Police.  Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
+                <p>In addition to the lack of clear patterns in observed data, the science is unclear as to how much of the variation in rainfall is driven by global warming versus natural climate variability, and how the two interact. While it is commonly thought that the El Nino Southern Oscillation plays a role in this variability, a <a href="http://www.weather.gov.sg/climate-el-la/">study</a> by Meteorological Service Singapore found it to be weakly correlated with rainfall. Indeed, there have been years where relatively weaker El Nino had a greater impact on rainfall than stronger El Nino events and vice versa. Further, while science does explain how global warming could lead to greater rainfall, the trends expected from this process are much smaller than the trends in observed data.</p>
             </div>
             <div class="flex-container flex-item ">
-                <div id="chart_line_year_rain" class="flex-item"></div>
-                <div id="legend_line_year_rain" class="flex-item"></div>
+                <div id="chart_heat_map" class="flex-item"></div>
             </div>
         </div>
 
+
+        <div class="flex-container">
+            <div class="flex-container flex-item ">
+                <div id="chart_heat_map_decade" class="flex-item"></div>
+            </div>
+            <div class="flex-item">
+                <h2>
+                    Uncertainies in trend and drivers make it difficult to project rainfall.
+                </h2>
+                <p>Given these uncertainties in observed trends and causal drivers, it is difficult to project rainfall. Different models have diametrically opposite predictions ranging from positive to negative trends in rainfall. This is consistent with regional climate projections. Further, in all cases, projected long-term trend is smaller than natural variability simulated in the models, suggesting that rainfall will continue to be dominated by natural variability in the foreseeable future. This makes it very difficult to plan for the future. The government concluded in 2015 that no specific conclusion can be drawn regarding the magnitude or direction in change in rainfall.</p>
+            </div>
+        </div>
+
+        <h2>One possibility is greater rainfall variability.</h2>
+
+        <p>One possibility is that we will see wetter wet months and dryer dry months. Certain climate prediction models predict more rain in the wet seasons and/ or less rainfall in the dry seasons. An increase in variability in rainfall would present significant challenges for water resources as droughts would lead to insufficient water levels in reservoirs, while intense rainfalls could overwhelm drainage systems and cause floods. Furthermore, the increased variation is rainfall would threaten food security.</p>
+
+        <div class="flex-container">
+            <div id="chart_box_plot" class="flex-item"></div>
+        </div>
+        
         <div class="flex-container">
             <div class="flex-item">
                 <h2>
-                    We also cannot draw conclusions about the change in rainfall within a decade or a year.
+                    However, this trend has not been observed in historical data over the decades.
                 </h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis odit impedit odio illo. Incidunt soluta, maiores natus quam illo nulla cumque numquam et tempore eum! Tempore soluta repellendus natus atque.</p>
+                <p>While this might be the projection, it does not seem to be observed in the historical data. While there is significant variation in variance of rainfall on an annual basis, there is no clear trend of increasing variance. Furthermore, when aggregated by decade, the variation seems to even out. However, preparing for greater extremes in rainfall on two fronts could be a prudent approach.</p>
             </div>
             <div class="flex-container flex-item ">
                 <div id="chart_box_plot_decade" class="flex-item"></div>
-                <div id="chart_box_plot" class="flex-item"></div>
             </div>
             
         </div>

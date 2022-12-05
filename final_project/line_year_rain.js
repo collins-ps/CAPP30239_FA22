@@ -56,7 +56,7 @@ d3.csv('sg_weather_year.csv').then(data => {
       .attr("dx", "-0.5em")
       .attr("y", 10)
       .attr("transform", "rotate(-90)")
-      .text("Rainfall");
+      .text("");
     
     let line_total = d3.line()
         .x(d => x(d.year))
@@ -79,17 +79,14 @@ d3.csv('sg_weather_year.csv').then(data => {
         .attr("fill", "none")
         .attr("stroke", "orange");
 
-    d3.select("#legend_line_year_rain")
-    .node()
-    .appendChild(
-      Legend(
-        d3.scaleOrdinal(
-          ["Total rainfall", "Max rainfall in a day"],
-          (['steelblue', 'orange'])
-          // (d3.schemePuOr[9]) // Alternative color scheme https://observablehq.com/@d3/color-schemes
-        ),
-        { title: "Indicator" }
-      ));
+    let swatchHTML = Swatches(d3.scaleOrdinal(["Total rainfall", "Max rainfall in a day"],['steelblue', 'orange']));
+
+    d3.select("#chart_line_year_rain")
+      .append("div")
+      .node().innerHTML = swatchHTML;
+
   });
+
+  
 
 })();

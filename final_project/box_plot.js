@@ -95,7 +95,7 @@ function BoxPlot(data, {
     // Construct scales and axes.
     const xScale = xType(xDomain, xRange).interpolate(d3.interpolateRound);
     const yScale = yType(yDomain, yRange);
-    const xAxis = d3.axisBottom(xScale).ticks(thresholds, xFormat).tickSizeOuter(0).tickFormat((d) => dayjs().year(d).format("YYYY"));
+    const xAxis = d3.axisBottom(xScale).ticks(thresholds, xFormat).tickSizeOuter(0).tickFormat((d) => "'" + dayjs().year(d).format("YY"));
     const yAxis = d3.axisLeft(yScale).ticks(height / 40, yFormat);
   
     const svg = d3.create("svg")
