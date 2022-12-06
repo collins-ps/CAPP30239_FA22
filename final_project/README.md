@@ -1,4 +1,5 @@
-# CAPP30239 Final Project: Climate Change in Singapore between 1982-2022
+# CAPP30239 Final Project: 
+## Climate Change in Singapore between 1982-2022
 
 This directory was created as a final project for CAPP30239: Data Visualizaton for Policy Analysis. I decided to do my project on climate change because I believe it is the biggest existential threat of my generation, and understanding how the climate has changed is the first step to taking measures to prepare for the future. Since the effects of climate change vary geographically, I wanted to focus on my home country of Singapore specifically. I chose to focus on temperature and rainfall, which are the two most important aspects of Singapore's climate.
 
