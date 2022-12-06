@@ -1,5 +1,5 @@
-(function heat_map_temp(){
-  const margin = {top: 0, right: 25, bottom: 0, left: 40},
+(function heat_map(){
+  const margin = {top: 0, right: 25, bottom: 20, left: 40},
   width = 500 - margin.left - margin.right,
   height = 300 - margin.top - margin.bottom;
 
