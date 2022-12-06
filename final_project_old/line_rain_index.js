@@ -1,19 +1,21 @@
-d3.csv('sg_weather_year.csv').then(data => {
-  let timeParse = d3.timeParse("%Y"); 
+d3.csv('sg_weather.csv').then(data => {
+  let timeParse = d3.timeParse("%Y-%m");
 
   let years = new Set(); 
 
   for (let d of data) {
-    d.year = timeParse(d.year);
-    d.Decade = new Date(d.year).getFullYear() - new Date(d.year).getFullYear() % 10;
+    d.Date = timeParse(d.month);
+    d.Year = new Date(d.Date).getFullYear();
+    d.Month = new Date(d.Date).getMonth();
+    d.Decade = new Date(d.Date).getFullYear() - new Date(d.Date).getFullYear() % 10;
     d.total_rainfall = +d.total_rainfall;
-    years.add(d.year); // push unique values to Set
+    years.add(d.Year); // push unique values to Set
   }
 
   console.log(data)
 
   let chart = IndexChart(data, {
-    x: d => d.year,
+    x: d => d.Month,
     y: d => d.total_rainfall,
     z: d => d.Decade,
     yLabel: "↑ Total Rainfall",
@@ -30,6 +32,8 @@ d3.csv('sg_weather_year.csv').then(data => {
         d3.scaleOrdinal(
           ["1980", "1990", "2000", "2010", "2020"],
           (d3.schemeTableau10)
+          //(['red', 'orange', 'yellow', 'green', 'blue'])
+          // (d3.schemePuOr[9]) // Alternative color scheme https://observablehq.com/@d3/color-schemes
         ),
         { title: "Decade" }
       ));

@@ -23,7 +23,7 @@ d3.csv("sg_weather.csv").then(data => {
         xLabel: "Year →",
         yLabel: "↑ Total Rainfall",
         width: 1040,
-        height: 600
+        height: 500
       })
 
     document.getElementById("chart_box_plot_decade").appendChild(chart);

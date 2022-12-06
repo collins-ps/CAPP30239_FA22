@@ -1,10 +1,9 @@
-(function line_year_rain(){
-
-const height = 500,
+(function line_year_temp(){
+  const height = 500,
     width = 800,
     margin = ({ top: 15, right: 30, bottom: 35, left: 40 });
     
-const svg = d3.select("#chart_line_year_rain")
+const svg = d3.select("#chart_line_year_temp")
     .append("svg")
     .attr("viewBox", [0, 0, width, height]);
 
@@ -12,19 +11,19 @@ d3.csv('sg_weather_year.csv').then(data => {
     let timeParse = d3.timeParse("%Y"); // parse time to JS format so code can read it
 
     for (let d of data) {
-        d.total_rainfall = +d.total_rainfall;
-        d.maximum_rainfall_in_a_day = +d.maximum_rainfall_in_a_day;
+        d.mean_temp = +d.mean_temp;
+        d.max_temperature = +d.max_temperature;
         d.year = timeParse(d.year); // using timeParse function we created above
     }
 
     console.log(data)
-    
+
     let x = d3.scaleTime()
         .domain(d3.extent(data, d => d.year)) // returns an array
         .range([margin.left, width - margin.right]);
 
     let y = d3.scaleLinear()
-        .domain([0,d3.max(data, d => d.total_rainfall)]).nice() // nice to round up axis tick
+        .domain([25,d3.max(data, d => d.max_temperature)]).nice() // nice to round up axis tick
         .range([height - margin.bottom, margin.top]);
     
     svg.append("g")
@@ -56,36 +55,34 @@ d3.csv('sg_weather_year.csv').then(data => {
       .attr("dx", "-0.5em")
       .attr("y", 10)
       .attr("transform", "rotate(-90)")
-      .text("");
+      .text("Temperature (C)");
     
-    let line_total = d3.line()
+    let line_mean = d3.line()
         .x(d => x(d.year))
-        .y(d => y(d.total_rainfall))
+        .y(d => y(d.mean_temp))
+        //.curve(d3.curveNatural); // more: https://observablehq.com/@d3/d3-line#cell-244
 
     svg.append("path")
         .datum(data)
-        .attr("d", line_total)
+        .attr("d", line_mean)
         .attr("fill", "none")
         .attr("stroke", "steelblue");
 
     let line_max = d3.line()
         .x(d => x(d.year))
-        .y(d => y(d.maximum_rainfall_in_a_day))
+        .y(d => y(d.max_temperature))
 
     svg.append("path")
         .datum(data)
         .attr("d", line_max)
         .attr("fill", "none")
-        .attr("stroke", "orange");
+        .attr("stroke", "orange"); 
 
-    let swatchHTML = Swatches(d3.scaleOrdinal(["Total rainfall", "Max rainfall in a day"],['steelblue', 'orange']));
+    let swatchHTML = Swatches(d3.scaleOrdinal(["Max temperature", "Mean temperature"],['orange', 'steelblue']));
 
-    d3.select("#chart_line_year_rain")
+    d3.select("#chart_line_year_temp")
       .append("div")
       .node().innerHTML = swatchHTML;
 
   });
-
-  
-
 })();

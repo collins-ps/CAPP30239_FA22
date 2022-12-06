@@ -61,6 +61,7 @@ d3.csv('sg_weather_year.csv').then(data => {
     let line_total = d3.line()
         .x(d => x(d.year))
         .y(d => y(d.total_rainfall))
+        //.curve(d3.curveNatural); // more: https://observablehq.com/@d3/d3-line#cell-244
 
     svg.append("path")
         .datum(data)

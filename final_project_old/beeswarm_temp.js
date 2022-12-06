@@ -1,11 +1,10 @@
-// Copyright 2021 Observable, Inc.
-// Released under the ISC license.
-// https://observablehq.com/@d3/stacked-bar-chart
-
+(function beeswarm_temp(){
 d3.csv("sg_weather.csv").then(data => {
 
     console.log(data)
 
+    /*data = data.filter(d => d.Age != null);
+    console.log(data);  */
     let timeParse = d3.timeParse("%Y-%m");
 
     for (let d of data) {
@@ -13,60 +12,64 @@ d3.csv("sg_weather.csv").then(data => {
         d.Year = new Date(d.Date).getFullYear();
         d.Month = new Date(d.Date).getMonth();
         d.Decade = new Date(d.Date).getFullYear() - new Date(d.Date).getFullYear() % 10;
-        d.maximum_rainfall_in_a_day = +d.maximum_rainfall_in_a_day;
-        d.no_of_rainy_days = +d.no_of_rainy_days;
-        d.total_rainfall = +d.total_rainfall;
+        d.max_temperature = +d.max_temperature;
+        d.temp_extremes_min = +d.temp_extremes_min;
+        d.mean_temp = +d.mean_temp;
+        /*years.add(d.Year); // push unique values to Set */
       }
 
     console.log(data)
 
+    
     let chart_max = BeeswarmChart(data, {
-        x: d => d.maximum_rainfall_in_a_day,
-        group: d => d.Decade, // is this correct? */
-        label: "Maximum Rainfall →",
+        x: d => d.max_temperature,
+        group: d => d.Decade, 
+        label: "Maximum Temperature (C)→",
         type: d3.scaleLinear, // try d3.scaleLog
-        title: d => `${d.Year}: ${d.Month}\n${d.maximum_rainfall_in_a_day.toLocaleString("en")}.`,
+        title: d => `${d.Year}: ${d.Month}\n${d.max_temperature.toLocaleString("en")} C.`,
         width: 2000,
         marginTop: 150,
       });
 
     document.getElementById("chart_max").appendChild(chart_max);
 
-    let chart_days = BeeswarmChart(data, {
-        x: d => d.no_of_rainy_days,
-        group: d => d.Decade, // is this correct? */
-        label: "Number of Rainy Days →",
-        type: d3.scaleLinear, // try d3.scaleLog
-        title: d => `${d.Year}: ${d.Month}\n${d.no_of_rainy_days.toLocaleString("en")}.`,
-        width: 2000,
-        marginTop: 150,
-      });
+    let swatchHTML = Swatches(d3.scaleOrdinal(["1980", "1990", "2000", "2010", "2020"],d3.schemeSpectral[5]));
 
-    document.getElementById("chart_days").appendChild(chart_days);
+    d3.select("#chart_max")
+        .append("div")
+        .node().innerHTML = swatchHTML;
 
-    let chart_total = BeeswarmChart(data, {
-        x: d => d.total_rainfall,
+    /* 
+    let chart_min = BeeswarmChart(data, {
+        x: d => d.temp_extremes_min,
         group: d => d.Decade, 
-        label: "Total Rainfall →",
-        type: d3.scaleLinear, 
-        title: d => `${d.Year}: ${d.Month}\n${d.total_rainfall.toLocaleString("en")}.`,
+        label: "Minimum Temperature (C)→",
+        type: d3.scaleLinear, // try d3.scaleLog
+        title: d => `${d.Year}: ${d.Month}\n${d.temp_extremes_min.toLocaleString("en")} C.`,
         width: 2000,
         marginTop: 150,
       });
 
-    document.getElementById("chart_total").appendChild(chart_total);
+    document.getElementById("chart_min").appendChild(chart_min); */ 
 
-    d3.select("#legend")
-        .node()
-        .appendChild(
-        Legend(
-            d3.scaleOrdinal(
-            ["1980", "1990", "2000", "2010", "2020"],
-            (d3.schemeSpectral[5])
-            ),
-            { title: "Decade" }
-        ));
+    let chart_mean = BeeswarmChart(data, {
+        x: d => d.mean_temp,
+        group: d => d.Decade, // is this correct? */
+        label: "Mean Temperature (C)→",
+        type: d3.scaleLinear, // try d3.scaleLog
+        title: d => `${d.Year}: ${d.Month}\n${d.mean_temp.toLocaleString("en")} C.`,
+        width: 2000,
+        marginTop: 150,
+      });
 
+    document.getElementById("chart_mean").appendChild(chart_mean);
+
+    let swatchHTML2 = Swatches(d3.scaleOrdinal(["1980", "1990", "2000", "2010", "2020"],d3.schemeSpectral[5]));
+
+    d3.select("#chart_mean")
+        .append("div")
+        .node().innerHTML = swatchHTML2;
+    
 });
 
 // Copyright 2021 Observable, Inc.
@@ -194,3 +197,5 @@ function BeeswarmChart(data, {
 
     return svg.node();
 }
+
+})();

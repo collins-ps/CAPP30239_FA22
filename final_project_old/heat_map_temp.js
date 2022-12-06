@@ -1,10 +1,10 @@
 (function heat_map_temp(){
-  const margin = {top: 0, right: 25, bottom: 0, left: 40},
+  const margin = {top: 80, right: 25, bottom: 30, left: 40},
   width = 500 - margin.left - margin.right,
-  height = 300 - margin.top - margin.bottom;
+  height = 500 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-const svg = d3.select("#chart_heat_map_temp_decade")
+const svg = d3.select("#chart_heat_map_temp")
 .append("svg")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
@@ -28,7 +28,7 @@ d3.csv("sg_weather.csv").then(data => {
 
   // Labels of row and columns -> unique identifier of the column called 'group' and 'variable'
   const myGroups = Array.from(new Set(data.map(d => d.Month)))
-  const myVars = Array.from(new Set(data.map(d => d.Decade)))
+  const myVars = Array.from(new Set(data.map(d => d.Year)))
 
   // Build X scales and axis:
   const x = d3.scaleBand()
@@ -65,13 +65,14 @@ d3.csv("sg_weather.csv").then(data => {
     .interpolator(d3.interpolateInferno)
     .domain([24,30])
 
-  d3.select("#chart_heat_map_temp_decade")
+  d3.select("#chart_heat_map_temp")
       .append("div")
       .node()
       .appendChild(Legend(myColor));
 
+
   // create a tooltip
-  const tooltip = d3.select("#chart_heat_map_temp_decade")
+  const tooltip = d3.select("#chart_heat_map_temp")
     .append("div")
     .style("opacity", 0)
     .attr("class", "tooltip")
@@ -91,7 +92,7 @@ d3.csv("sg_weather.csv").then(data => {
   }
   const mousemove = function(event,d) {
     tooltip
-      .html("The mean temperature in " + getMonthName(d.Month) + " in the " + d.Decade + "'s was: " + d.mean_temp + " C.")
+      .html("The mean temperature in " + getMonthName(d.Month) + " " + d.Year + " was: " + d.mean_temp + " C.")
       .style("left", (event.x)/2 + "px")
       .style("top", (event.y)/2 + "px")
   }
@@ -105,10 +106,10 @@ d3.csv("sg_weather.csv").then(data => {
 
   // add the squares
   svg.selectAll()
-    .data(data, function(d) {return d.Month+':'+d.Decade;})
+    .data(data, function(d) {return d.Month+':'+d.Year;})
     .join("rect")
       .attr("x", function(d) { return x(d.Month) })
-      .attr("y", function(d) { return y(d.Decade) })
+      .attr("y", function(d) { return y(d.Year) })
       .attr("rx", 4)
       .attr("ry", 4)
       .attr("width", x.bandwidth() )
@@ -121,6 +122,25 @@ d3.csv("sg_weather.csv").then(data => {
     .on("mousemove", mousemove)
     .on("mouseleave", mouseleave)
 })
+/*
+// Add title to graph
+svg.append("text")
+        .attr("x", 0)
+        .attr("y", -50)
+        .attr("text-anchor", "left")
+        .style("font-size", "22px")
+        .text("A d3.js heatmap");
+
+// Add subtitle to graph
+svg.append("text")
+        .attr("x", 0)
+        .attr("y", -20)
+        .attr("text-anchor", "left")
+        .style("font-size", "14px")
+        .style("fill", "grey")
+        .style("max-width", 400)
+        .text("A short description of the take-away message of this chart.");
+*/
 
 function getMonthName(monthNumber) {
   const date = new Date();
@@ -130,4 +150,3 @@ function getMonthName(monthNumber) {
 }
 
 })();
-

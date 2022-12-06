@@ -3,8 +3,6 @@ d3.csv("sg_weather.csv").then(data => {
 
     console.log(data)
 
-    /*data = data.filter(d => d.Age != null);
-    console.log(data);  */
     let timeParse = d3.timeParse("%Y-%m");
 
     for (let d of data) {
@@ -15,7 +13,6 @@ d3.csv("sg_weather.csv").then(data => {
         d.max_temperature = +d.max_temperature;
         d.temp_extremes_min = +d.temp_extremes_min;
         d.mean_temp = +d.mean_temp;
-        /*years.add(d.Year); // push unique values to Set */
       }
 
     console.log(data)
@@ -25,7 +22,7 @@ d3.csv("sg_weather.csv").then(data => {
         x: d => d.max_temperature,
         group: d => d.Decade, 
         label: "Maximum Temperature (C)→",
-        type: d3.scaleLinear, // try d3.scaleLog
+        type: d3.scaleLinear, 
         title: d => `${d.Year}: ${d.Month}\n${d.max_temperature.toLocaleString("en")} C.`,
         width: 2000,
         marginTop: 150,
@@ -39,24 +36,11 @@ d3.csv("sg_weather.csv").then(data => {
         .append("div")
         .node().innerHTML = swatchHTML;
 
-    /* 
-    let chart_min = BeeswarmChart(data, {
-        x: d => d.temp_extremes_min,
-        group: d => d.Decade, 
-        label: "Minimum Temperature (C)→",
-        type: d3.scaleLinear, // try d3.scaleLog
-        title: d => `${d.Year}: ${d.Month}\n${d.temp_extremes_min.toLocaleString("en")} C.`,
-        width: 2000,
-        marginTop: 150,
-      });
-
-    document.getElementById("chart_min").appendChild(chart_min); */ 
-
     let chart_mean = BeeswarmChart(data, {
         x: d => d.mean_temp,
-        group: d => d.Decade, // is this correct? */
+        group: d => d.Decade, 
         label: "Mean Temperature (C)→",
-        type: d3.scaleLinear, // try d3.scaleLog
+        type: d3.scaleLinear, 
         title: d => `${d.Year}: ${d.Month}\n${d.mean_temp.toLocaleString("en")} C.`,
         width: 2000,
         marginTop: 150,

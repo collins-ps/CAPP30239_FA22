@@ -1,9 +1,10 @@
-(function line_rain(){
+/* D3 Line Chart */
+
 const height = 500,
     width = 800,
-    margin = ({ top: 15, right: 30, bottom: 35, left: 40 });
+    margin = ({ top: 15, right: 30, bottom: 35, left: 40 }); 
     
-const svg = d3.select("#chart_line_rain")
+const svg = d3.select("#chart_line_temp")
     .append("svg")
     .attr("viewBox", [0, 0, width, height]);
 
@@ -17,7 +18,9 @@ d3.csv('sg_weather.csv').then(data => {
     d.Year = new Date(d.Date).getFullYear();
     d.Month = new Date(d.Date).getMonth();
     d.Decade = new Date(d.Date).getFullYear() - new Date(d.Date).getFullYear() % 10;
-    d.total_rainfall = +d.total_rainfall;
+    d.max_temperature = +d.max_temperature;
+    d.temp_extremes_min = +d.temp_extremes_min;
+    d.mean_temp = +d.mean_temp;
     years.add(d.Year); // push unique values to Set
   }
 
@@ -28,7 +31,7 @@ d3.csv('sg_weather.csv').then(data => {
         .range([margin.left, width - margin.right]);
 
     let y = d3.scaleLinear()
-        .domain([0,d3.max(data, d => d.total_rainfall)]).nice() // nice to round up axis tick
+        .domain([25,d3.max(data, d => d.mean_temp)]).nice() // nice to round up axis tick
         .range([height - margin.bottom, margin.top]);
     
     svg.append("g")
@@ -36,6 +39,7 @@ d3.csv('sg_weather.csv').then(data => {
       .attr("class", "y-axis") // adding a class to y-axis for scoping
       .call(d3.axisLeft(y)
         .tickSizeOuter(0)
+        /*.tickFormat(d => d + "%") // format to include % */
         .tickSize(-width + margin.right + margin.left) // modified to meet at end of axis
       );
 
@@ -65,14 +69,14 @@ d3.csv('sg_weather.csv').then(data => {
       .attr("dx", "-0.5em")
       .attr("y", 10)
       .attr("transform", "rotate(-90)")
-      .text("Total Rainfall");
+      .text("Mean Temperature (C)");
 
     for (let i = 1982; i < 1990; i++) {
       let data1 = data.filter(d => d.Year === i);
 
       let line = d3.line()
           .x(d => x(d.Month))
-          .y(d => y(d.total_rainfall))
+          .y(d => y(d.mean_temp))
 
       svg.append("path")
           .datum(data1)
@@ -86,7 +90,7 @@ d3.csv('sg_weather.csv').then(data => {
 
       let line = d3.line()
           .x(d => x(d.Month))
-          .y(d => y(d.total_rainfall))
+          .y(d => y(d.mean_temp))
 
       svg.append("path")
           .datum(data1)
@@ -100,7 +104,7 @@ d3.csv('sg_weather.csv').then(data => {
 
       let line = d3.line()
           .x(d => x(d.Month))
-          .y(d => y(d.total_rainfall))
+          .y(d => y(d.mean_temp))
 
       svg.append("path")
           .datum(data1)
@@ -114,7 +118,7 @@ d3.csv('sg_weather.csv').then(data => {
 
       let line = d3.line()
           .x(d => x(d.Month))
-          .y(d => y(d.total_rainfall))
+          .y(d => y(d.mean_temp))
 
       svg.append("path")
           .datum(data1)
@@ -128,7 +132,7 @@ d3.csv('sg_weather.csv').then(data => {
 
       let line = d3.line()
           .x(d => x(d.Month))
-          .y(d => y(d.total_rainfall))
+          .y(d => y(d.mean_temp))
 
       svg.append("path")
           .datum(data1)
@@ -139,10 +143,8 @@ d3.csv('sg_weather.csv').then(data => {
 
     let swatchHTML = Swatches(d3.scaleOrdinal(["1980", "1990", "2000", "2010", "2020"],['red', 'orange', 'yellow', 'green', 'blue']));
 
-    d3.select("#chart_line_rain")
+    d3.select("#chart_line_temp")
       .append("div")
       .node().innerHTML = swatchHTML;
 
   });
-
-})();

@@ -122,6 +122,28 @@ d3.csv("sg_weather.csv").then(data => {
     .on("mouseleave", mouseleave)
 })
 
+
+
+/*
+// Add title to graph
+svg.append("text")
+        .attr("x", 0)
+        .attr("y", -50)
+        .attr("text-anchor", "left")
+        .style("font-size", "22px")
+        .text("A d3.js heatmap");
+
+// Add subtitle to graph
+svg.append("text")
+        .attr("x", 0)
+        .attr("y", -20)
+        .attr("text-anchor", "left")
+        .style("font-size", "14px")
+        .style("fill", "grey")
+        .style("max-width", 400)
+        .text("A short description of the take-away message of this chart.");
+*/
+
 function getMonthName(monthNumber) {
   const date = new Date();
   date.setMonth(monthNumber);

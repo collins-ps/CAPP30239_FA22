@@ -2,7 +2,7 @@ import pandas as pd
 
 df_old = pd.read_csv('/Users/pscollins/CAPP_30239/CAPP30239_FA22/final_project/sg_weather.csv')
 df_old[['year','month']] = df_old['month'].str.split('-',expand=True)
-df_new = pd.DataFrame(columns=["year","count","total_rainfall","maximum_rainfall_in_a_day","no_of_rainy_days","sum_temp","mean_temp","max_temperature"]) 
+df_new = pd.DataFrame(columns=["year","count","total_rainfall","maximum_rainfall_in_a_day","no_of_rainy_days","sum_temp","mean_temp","max_temperature"]) # ,"temp_extremes_min"])
 df_new['year'] = range(1982, 2023)
 df_new = df_new.fillna(0.)
 

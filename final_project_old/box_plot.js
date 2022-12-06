@@ -18,15 +18,15 @@ d3.csv("sg_weather.csv").then(data => {
     console.log(data)
 
     let chart = BoxPlot(data, {
-        x: d => d.Decade,
+        x: d => d.Year,
         y: d => d.total_rainfall,
         xLabel: "Year →",
         yLabel: "↑ Total Rainfall",
         width: 1040,
-        height: 600
+        height: 500
       })
 
-    document.getElementById("chart_box_plot_decade").appendChild(chart);
+    document.getElementById("chart_box_plot").appendChild(chart);
 
 });
 
@@ -51,7 +51,7 @@ function BoxPlot(data, {
     yType = d3.scaleLinear, // type of y-scale
     yDomain, // [ymin, ymax]
     yRange = [height - marginBottom, marginTop], // [bottom, top]
-    thresholds = width / 165, // approximative number of thresholds
+    thresholds = width / 5, // approximative number of thresholds
     stroke = "currentColor", // stroke color of whiskers, median, outliers
     fill = "#ddd", // fill color of boxes
     jitter = 4, // amount of random jitter for outlier dots, in pixels
@@ -95,7 +95,7 @@ function BoxPlot(data, {
     // Construct scales and axes.
     const xScale = xType(xDomain, xRange).interpolate(d3.interpolateRound);
     const yScale = yType(yDomain, yRange);
-    const xAxis = d3.axisBottom(xScale).ticks(thresholds, xFormat).tickSizeOuter(0).tickFormat((d) => dayjs().year(d).format("YYYY"));
+    const xAxis = d3.axisBottom(xScale).ticks(thresholds, xFormat).tickSizeOuter(0).tickFormat((d) => "'" + dayjs().year(d).format("YY"));
     const yAxis = d3.axisLeft(yScale).ticks(height / 40, yFormat);
   
     const svg = d3.create("svg")

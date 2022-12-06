@@ -1,7 +1,7 @@
 (function heat_map(){
-  const margin = {top: 0, right: 25, bottom: 0, left: 40},
+  const margin = {top: 0, right: 25, bottom: 40, left: 40},
   width = 500 - margin.left - margin.right,
-  height = 400 - margin.top - margin.bottom;
+  height = 500 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 const svg = d3.select("#chart_heat_map")
@@ -122,27 +122,6 @@ d3.csv("sg_weather.csv").then(data => {
     .on("mousemove", mousemove)
     .on("mouseleave", mouseleave)
 })
-
-/*
-
-// Add title to graph
-svg.append("text")
-        .attr("x", 0)
-        .attr("y", -50)
-        .attr("text-anchor", "left")
-        .style("font-size", "22px")
-        .text("A d3.js heatmap");
-
-// Add subtitle to graph
-svg.append("text")
-        .attr("x", 0)
-        .attr("y", -20)
-        .attr("text-anchor", "left")
-        .style("font-size", "14px")
-        .style("fill", "grey")
-        .style("max-width", 400)
-        .text("A short description of the take-away message of this chart.");
-*/
 
 function getMonthName(monthNumber) {
   const date = new Date();

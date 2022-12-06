@@ -6,6 +6,8 @@ d3.csv("sg_weather.csv").then(data => {
 
     console.log(data)
 
+    /*data = data.filter(d => d.Age != null);
+    console.log(data);  */
     let timeParse = d3.timeParse("%Y-%m");
 
     for (let d of data) {
@@ -16,6 +18,8 @@ d3.csv("sg_weather.csv").then(data => {
         d.maximum_rainfall_in_a_day = +d.maximum_rainfall_in_a_day;
         d.no_of_rainy_days = +d.no_of_rainy_days;
         d.total_rainfall = +d.total_rainfall;
+        
+        /*years.add(d.Year); // push unique values to Set */
       }
 
     console.log(data)
@@ -46,9 +50,9 @@ d3.csv("sg_weather.csv").then(data => {
 
     let chart_total = BeeswarmChart(data, {
         x: d => d.total_rainfall,
-        group: d => d.Decade, 
+        group: d => d.Decade, // is this correct? */
         label: "Total Rainfall →",
-        type: d3.scaleLinear, 
+        type: d3.scaleLinear, // try d3.scaleLog
         title: d => `${d.Year}: ${d.Month}\n${d.total_rainfall.toLocaleString("en")}.`,
         width: 2000,
         marginTop: 150,
@@ -63,6 +67,7 @@ d3.csv("sg_weather.csv").then(data => {
             d3.scaleOrdinal(
             ["1980", "1990", "2000", "2010", "2020"],
             (d3.schemeSpectral[5])
+            // (d3.schemePuOr[9]) // Alternative color scheme https://observablehq.com/@d3/color-schemes
             ),
             { title: "Decade" }
         ));

@@ -36,6 +36,7 @@ d3.csv('sg_weather.csv').then(data => {
       .attr("class", "y-axis") // adding a class to y-axis for scoping
       .call(d3.axisLeft(y)
         .tickSizeOuter(0)
+        /*.tickFormat(d => d + "%") // format to include % */
         .tickSize(-width + margin.right + margin.left) // modified to meet at end of axis
       );
 

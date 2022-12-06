@@ -1,10 +1,10 @@
-(function heat_map_temp(){
+(function heat_map(){
   const margin = {top: 0, right: 25, bottom: 0, left: 40},
   width = 500 - margin.left - margin.right,
   height = 300 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-const svg = d3.select("#chart_heat_map_temp_decade")
+const svg = d3.select("#chart_heat_map_decade")
 .append("svg")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
@@ -21,7 +21,9 @@ d3.csv("sg_weather.csv").then(data => {
         d.Year = new Date(d.Date).getFullYear();
         d.Month = new Date(d.Date).getMonth();
         d.Decade = new Date(d.Date).getFullYear() - new Date(d.Date).getFullYear() % 10;
-        d.mean_temp = +d.mean_temp;
+        d.maximum_rainfall_in_a_day = +d.maximum_rainfall_in_a_day;
+        d.no_of_rainy_days = +d.no_of_rainy_days;
+        d.total_rainfall = +d.total_rainfall;
       }
 
     console.log(data)
@@ -54,7 +56,6 @@ d3.csv("sg_weather.csv").then(data => {
     .range([ height, 0 ])
     .domain(myVars)
     .padding(0.05);
-
   svg.append("g")
     .style("font-size", 15)
     .call(d3.axisLeft(y).tickSize(0))
@@ -63,15 +64,15 @@ d3.csv("sg_weather.csv").then(data => {
   // Build color scale
   const myColor = d3.scaleSequential()
     .interpolator(d3.interpolateInferno)
-    .domain([24,30])
+    .domain([1,100])
 
-  d3.select("#chart_heat_map_temp_decade")
+  d3.select("#chart_heat_map_decade")
       .append("div")
       .node()
       .appendChild(Legend(myColor));
 
   // create a tooltip
-  const tooltip = d3.select("#chart_heat_map_temp_decade")
+  const tooltip = d3.select("#chart_heat_map_decade")
     .append("div")
     .style("opacity", 0)
     .attr("class", "tooltip")
@@ -91,7 +92,7 @@ d3.csv("sg_weather.csv").then(data => {
   }
   const mousemove = function(event,d) {
     tooltip
-      .html("The mean temperature in " + getMonthName(d.Month) + " in the " + d.Decade + "'s was: " + d.mean_temp + " C.")
+      .html("The mean total rainfall in " + getMonthName(d.Month) + " in the " + d.Decade + "'s was: " + d.total_rainfall + " mm.")
       .style("left", (event.x)/2 + "px")
       .style("top", (event.y)/2 + "px")
   }
@@ -113,7 +114,7 @@ d3.csv("sg_weather.csv").then(data => {
       .attr("ry", 4)
       .attr("width", x.bandwidth() )
       .attr("height", y.bandwidth() )
-      .style("fill", function(d) { return myColor(d.mean_temp)} )
+      .style("fill", function(d) { return myColor(d.total_rainfall)} )
       .style("stroke-width", 4)
       .style("stroke", "none")
       .style("opacity", 0.8)
@@ -121,6 +122,27 @@ d3.csv("sg_weather.csv").then(data => {
     .on("mousemove", mousemove)
     .on("mouseleave", mouseleave)
 })
+
+/*
+
+// Add title to graph
+svg.append("text")
+        .attr("x", 0)
+        .attr("y", -50)
+        .attr("text-anchor", "left")
+        .style("font-size", "22px")
+        .text("A d3.js heatmap");
+
+// Add subtitle to graph
+svg.append("text")
+        .attr("x", 0)
+        .attr("y", -20)
+        .attr("text-anchor", "left")
+        .style("font-size", "14px")
+        .style("fill", "grey")
+        .style("max-width", 400)
+        .text("A short description of the take-away message of this chart.");
+*/
 
 function getMonthName(monthNumber) {
   const date = new Date();
@@ -130,4 +152,3 @@ function getMonthName(monthNumber) {
 }
 
 })();
-

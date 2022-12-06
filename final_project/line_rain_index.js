@@ -32,8 +32,6 @@ d3.csv('sg_weather.csv').then(data => {
         d3.scaleOrdinal(
           ["1980", "1990", "2000", "2010", "2020"],
           (d3.schemeTableau10)
-          //(['red', 'orange', 'yellow', 'green', 'blue'])
-          // (d3.schemePuOr[9]) // Alternative color scheme https://observablehq.com/@d3/color-schemes
         ),
         { title: "Decade" }
       ));

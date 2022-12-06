@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Change</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Assistant', sans-serif;
+        }
+        .container {
+            max-width: 1000px;
+            padding: 20px;
+            margin: 0 auto;
+        }
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: normal;
+            align-items: normal;
+            align-content: normal;
+            column-gap: 40px;
+            margin: 20px 0px;
+        }
+        .flex-item {
+            display: block;
+            flex-grow: 0;
+            flex-shrink: 1;
+            flex-basis: auto;
+            align-self: auto;
+            order: 0;
+            width: 50%;
+        }
+        .float-left {
+            float:left;
+            width: 50%;
+        }
+
+        text {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+        }
+        hr {
+            margin: 60px 0;
+        }
+
+        #chart_line_temp , #chart_line_year_temp , #chart_line_rain , #chart_line_year_rain , #chart_box_plot_decade, #chart_box_plot { 
+            width: 100%; 
+        }
+
+        #chart_max, #chart_mean { 
+            width: 100%; 
+        }
+
+        #chart_line_temp text, #chart_line_year_temp text , #chart_line_rain text, #chart_line_year_rain text{
+            font-size: 12px;
+        }
+
+        #chart_box_plot_decade text {
+            font-size: 15px;
+        }
+
+        #chart_line_temp .y-axis path.domain, #chart_line_year_temp .y-axis path.domain, #chart_line_rain .y-axis path.domain, #chart_line_year_rain .y-axis path.domain{ 
+            display: none;  
+        }
+
+        #chart_line_temp .y-axis line, #chart_line_year_temp .y-axis line, #chart_line_rain .y-axis line, #chart_line_year_rain .y-axis line{
+            stroke: #ddd;
+            stroke-dasharray: 2;
+        } 
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            Understanding Climate Change in Singapore from 1982-2022
+        </h1>
+
+        <p>Sources: <a href="https://data.gov.sg/">Data</a>, <a href="https://ccrs.weather.gov.sg/wp-content/uploads/2015/04/Publications-Second-National-Climate-Change-Study-Report-for-Stakeholders.pdf">Research</a>, <a href="https://www.nccs.gov.sg/singapores-climate-action/impact-of-climate-change-in-singapore/">Research</a> </p>
+
+        <p>
+            Climate change is one of the largest existential threats of our generation. While the effects of climate change can be felt from all corners of the globe, they are geographically uneven, with some nations feeling its effects more significantly and immediately than others. This includes Singapore; as a low-lying island nation, Singapore is threatened by the effects of climate change over land and water. Understanding how Singapore's climate has changed and projecting future trends is key to preparing for outcomes that we hope will not materialize.   
+        </p>
+
+        <p>
+            Singapore has tracked weather data in 28 stations across the country since 1980, with some stations tracking data from even further back. Data from 1982-2022 recorded at the Changi Climate Station is available on the Singapore Government's open data portal for public use. This article uses this dataset to explore how the two most important elements of Singapore's climate, surface temperature and rainfall, have changed over the last 40 years. While the data is not complete, there is strong correlation in aggregated annual weather data between weather stations, thus the analysis is applicable for Singapore as a whole.
+        </p>
+
+        <p>
+            Overall, the data clearly shows that surface temperature is increasing. However, the change in rainfall is unclear. These patterns apply to wet (November-January) as well as dry months (February and June-September). Unsurprisingly, while climate projection models unanimously agree that Singapore is likely to get warmer, they are divided on rainfall projections.
+        </p>
+
+        <p>
+            In studying climate change, it is important to understand that while anthropogenic activities are a key driver, there are other contributing factors. There is natural variation in the climate driven by weather events such as the El Nino Southern Oscillation and volcanic eruptions that would occur regardless of the anthropogenic influence of global warming. There are also natural modes of variability that occur on long timeframes such as the Pacific Decadal Oscillation and the Atlantic Meridional Oscillation. The magnitude of these nautral variations can be comparable to variations caused by anthropogenic global warming, making it difficult to determine key drivers of climate change. It is thus not possible to attribute causes for trends visualized below solely to anthropogenic activities. 
+        </p>
+
+        <div class="flex-container">
+            
+            <div class="flex-container flex-item ">
+                <h4><center>Mean temperature by month and decade</center></h4>
+                <div id="chart_heat_map_temp_decade" class="flex-item"></div>
+            </div>
+            <div class="flex-item ">
+                <h2>Across all units of measurement and timescales, Singapore is getting warmer. </h2>
+                <p>
+                    In the last four decades, annual mean temperature has increased from 26.9 Celsius to 28 Celsius. On a longer timeframe, mean temperature increased at a rate of 0.25 Celsius per decade. While this might seem trivial, this is <a href="https://www.nccs.gov.sg/singapores-climate-action/impact-of-climate-change-in-singapore/">double</a> the global trend over the same period.
+                </p>
+            </div>
+        </div>
+
+        <div class="flex-container">
+            <div class="flex-item">
+                <h2>Much of the increase in temperature is driven by human activity.</h2>
+                <p>
+                    A key driver of the increase in temperature is human activity - in their <a href="https://www.ipcc.ch/site/assets/uploads/2018/03/WG1AR5_SummaryVolume_FINAL.pdf">2013 Report</a>, the Intergovernmental Panel on Climate Change (IPCC) attributed over half of observed global trends in global warming to human activity. 
+                </p>
+            </div>
+            <div class="flex-container flex-item ">
+                <h4><center>Maximum and mean temperature by year</center></h4>
+                <div id="chart_line_year_temp" class="flex-item"></div>
+            </div>
+            
+        </div>
+
+        <div class="flex-container">
+            <div class="flex-container flex-item ">
+                <h4><center>Mean temperature by year across decades</center></h4>
+                <div id="chart_line_temp" class="flex-item"></div>
+            </div>
+            <div class="flex-item">
+                <h2>
+                    Small shifts are significant when it comes to climate change.
+                </h2>
+                <p>
+                    While the increasing trend might seem gentle, small shifts in temperature are significant and can produce catastrophic impacts on sea levels, coral reefs, biodiversity, and ecosystems. Rising temperatures are a challenge on multiple fronts in Singapore. The most immediate threat is rising sea levels. Between 1975 and 2009, the mean sea level in the Straits of Singapore <a href="https://www.nccs.gov.sg/singapores-climate-action/impact-of-climate-change-in-singapore/">rose</a> by 1.2 - 1.7 mm per year. WIth 30% of the country lying less than 5 meters above sea level and the remainder lying 15 meters above sea level, this is a worrying trajectory. Further, rising temperatures alters ecosystems including soil formation, nutrient storage, and pollution absorption, creating significant biodiversity and food security risks. Another risk is diseases as Singapore is in a region where vector-borne diseases, such as dengue fever, are endemic and tend to spike in warmer months. As temperatures rise, we might see an increase in life-threatening illnesses, in addition to greater prevalence of heat stress and discomfort.
+                </p>
+            </div>
+        </div>
+
+        <h2>
+            Distribution of recorded temperatures reflects magnitude of shift.
+        </h2>
+
+        <div class="flex-container">
+            <div id="chart_max" class="flex-item"></div>
+        </div>
+
+        <p>
+            Looking at the maximum and mean temperature recorded over the years as a distribution gives a better sense of the magnitude in the shift in temperature. The left tail of cooler temperatures generally comprises records from earlier decades while the right tail of warmer temperatures comprise records from more recent decades. It is worth noting that the high maximum temperatures recorded in the 1980's and 1990's were anomalies driven by two of the strongest El Nino events in recorded history in 1982-1983 and 1997-1998.  
+        </p>
+
+        <div class="flex-container">
+            <div id="chart_mean" class="flex-item"></div>
+        </div>
+
+        <p>
+            Given the clear trend in observed data, climate projections model are unambiguous that temperature is likely to continue rising in Singapore. Specifically, mean temperature is predicted to increase by 2-4 Celsius by the end of the century, which is significantly higher than what is experienced today and would have significant impact on life in Singapore. 
+        </p>
+
+        <hr>
+
+        <h2>
+            There is large variability in rainfall across measurement and timescales.
+        </h2>
+        <p>The question of change in rainfall is much more complicated than temperature. There is large variability in rainfall using any units of measurement or timescale. However, Government media on climate change typically  <a href="https://ccrs.weather.gov.sg/wp-content/uploads/2015/04/Publications-Second-National-Climate-Change-Study-Report-for-Stakeholders.pdf">states</a> that rainfall is increasing, based on the fact that annual rainfall recorded across all weather stations rose at a rate of 15.7mm per year or 67mm per decade between 1985-2015. There was also a statistically significant upward trend in rainfall recorded in 61% of weather stations. This trend would be supported by science - as temperature rises, the air can hold more moisture, and as moisture in the atmosphere increases, rainfall is likely to increase. </p>
+
+        <div class="flex-container">
+            <div class="flex-container flex-item ">
+                <h4><center>Total rainfall by year across decades</center></h4>
+                <div id="chart_line_rain" class="flex-item"></div>
+                <div id="legend_line_rain" class="flex-item"></div>
+                
+            </div>
+            <div class="flex-container flex-item ">
+                <h4><center>Total and maximum rainfall by year</center></h4>
+                <div id="chart_line_year_rain" class="flex-item"></div>
+            </div>
+            
+        </div>
+
+        <div class="flex-container">
+            <div class="flex-item">
+                <p>However, this can be confusing for those living in Singapore where there have been frequent drought-like conditions in recent years, with the 2010's being a particularly dry decade. Indeed, the data reveals a much more complicated picture as there is significant year-to-year and decade-to-decade variation, with no clear upward trend. Furthermore, older data shows that rainfall generally decreased from 1930 to 1980, casting doubt on a clear upward trajectory in rainfall. </p>
+            </div>
+            <div class="flex-item">
+                <h4><center>Total rainfall by year</center></h4>
+                <img src="rainfall_trend.png" alt="Rainfall Trend" style="width:500px;">
+                <p><a href="https://www.nccs.gov.sg/singapores-climate-action/impact-of-climate-change-in-singapore/">Chart source</a></p>
+            </div>
+        </div>
+
+        <div class="flex-container">
+            <div class="flex-item">
+                <h2>
+                    It is also unclear what is driving variation in rainfall.
+                </h2>
+                <p>In addition to the lack of clear patterns in observed data, the science is unclear as to how much of the variation in rainfall is driven by global warming versus natural climate variability, and how the two factors interact. While it is commonly thought that the El Nino Southern Oscillation plays an important role in this variability, a <a href="http://www.weather.gov.sg/climate-el-la/">study</a> by Meteorological Service Singapore found it to be weakly correlated with rainfall. Indeed, there have been years where relatively weaker El Nino had a greater impact on rainfall than stronger El Nino events and vice versa. Further, while science does explain how global warming could lead to greater rainfall, the trends expected from this process are much smaller than the trends in observed data.</p>
+            </div>
+            <div class="flex-container flex-item ">
+                <h4><center>Total rainfall by month and year</center></h4>
+                <div id="chart_heat_map" class="flex-item"></div>
+            </div>
+        </div>
+
+
+        <div class="flex-container">
+            <div class="flex-container flex-item ">
+                <h4><center>Mean total rainfall by month and decade</center></h4>
+                <div id="chart_heat_map_decade" class="flex-item"></div>
+            </div>
+            <div class="flex-item">
+                <h2>
+                    Uncertainies in trend and drivers make it difficult to project rainfall.
+                </h2>
+                <p>Given these uncertainties in observed trends and causal drivers, it is difficult to project rainfall. Different models have diametrically opposite predictions ranging from positive to negative trends in Singapore's rainfall. This is consistent with regional climate projections. Further, in all cases, projected long-term trend is smaller than the natural variability simulated in the models, suggesting that rainfall will continue to be dominated by natural climate variability. Considering various models, in it's <a href="https://ccrs.weather.gov.sg/wp-content/uploads/2015/04/Publications-Second-National-Climate-Change-Study-Report-for-Stakeholders.pdf">2015 report</a>, the Singapore Government concluded that no specific conclusion could be drawn regarding the magnitude or direction in change in rainfall. This makes it very difficult to plan for the future. </p>
+            </div>
+        </div>
+
+        <h2>One possibility is greater rainfall variability.</h2>
+
+        <p>One possibile scenario is greater variability in rainfall between wet and dry months. Certain climate prediction models predict more rain in the wet seasons and/ or less rain in the dry seasons. This would present significant challenges for water resources, as droughts would mean insufficient water in reservoirs for drinking water, while intense rainfalls could overwhelm drainage systems and cause flash floods. Furthermore, the increased variation in rainfall would threaten food security. However, there is no clear trend in variation in rainfall over the years. </p>
+
+        <h4><center>Distribution in monthly total rainfall by year</center></h4>
+        <div class="flex-container">
+            <div id="chart_box_plot" class="flex-item"></div>
+        </div>
+        
+        <div class="flex-container">
+            <div class="flex-item">
+                <h2>
+                    However, this trend has not been observed across the years or decades. 
+                </h2>
+                <p>While increased rainfall variability features in some climate projection, it does not seem to be observed in the historical data. While there is significant variation in the range of rainfall recorded in a month across the years, there is no clear trend. Furthermore, when aggregated by decades, there seems to be limited variation in the range of monthly rainfall within a decade. Nonetheless, given the significant uncertainties on the future of rainfall in Singapore, preparing for greater extremes in rainfall on two fronts could be a prudent approach.</p>
+            </div>
+            <div class="flex-container flex-item ">
+                <h4><center>Distribution in monthly total rainfall by decade</center></h4>
+                <div id="chart_box_plot_decade" class="flex-item"></div>
+            </div>
+            
+        </div>
+
+        <hr>
+
+        <h2>About Page</h2>
+        <h3>Motivation</h3>
+        <p>This webpage was created as a final project for CAPP30239: Data Visualizaton for Policy Analysis. I decided to do my project on climate change because I believe it is the biggest existential threat of my generation, and understanding how the climate has changed is the first step to taking measures to prepare for the future. Since the effects of climate change vary geographically, I wanted to focus on my home country of Singapore specifically. I chose to focus on temperature and rainfall, which are the two most important aspects of Singapore's climate. </p>
+
+        <h3>Data Source</h3>
+        <p>The visualizations use data from Changi Climate Station taken on a monthly basis between 1982 and 2022. The dataset is posted on the Government of Singapore's <a href="https://data.gov.sg/">open data portal</a>. While it would have been ideal to have used data from all 28 weather stations in Singapore, the Singapore Government says that data from one station is representative of all stations nation-wide, thus the analysis here is generally relevant for the country as a whole. However, as my data did not illustrate one important point on the general decreasing trend in rainfall between 1930-1980 and the general increasing trend between 1980-2020, I included a chart produced by the Government of Singapore. </p>
+
+        <h3>Process</h3>
+        <p> I began writing my story by diving into visualizing the data to see what insights it contained. I let the data guide the story, even when the data painted a confusing picture. The increasing trend in temperature shown in the data was clear and intuitive. However, despite trying different ways of visualizing rainfall data, I could not observe any clear trends. This was confusing as Government media typically states that rainfall has increased on an annual or decadal basis. Digging deeper into the literature, I found a more complicated picture on rainfall trends in Singapore that explained what I was observing in the data. This reminded me of the importance of looking past headlines and executive summaries as these are often simplified for mass audiences. Knowing that there was no clear trend in rainfall, I shifted my focus to visualizing the significant year-to-year and decade-to-decade variations in rainfall to illustrate why it was so difficult to project rainfall in Singapore, which makes the task of managing and preparing for climate change even more challenging. </p>
+
+        <p>I chose various types of charts that I believe best visualized the point I wanted to make. I started with line charts to illustrate timeseries trends in temperature and rainfall. However, since I had many datapoints collected on a monthly basis over 40 years, I had to think of ways to illustrate timeseries trends without using too many distinct lines. One way was to color-code the lines by decades to show the trends across decades. Another challenge was to accurately convey the magnitude of the changes, since changes in weather are often small but have significant impacts. One approach was to use a beeswarm plot to create a distribution of weather data. Another approach was to use heatmaps to show relative magnitude. Finally, I included boxplots to explore the projected increased variability in rainfall as this illustrates distribution. </p>
+
+        <h3>Challenges</h3>
+        <p>In the process of completing this final project, I encountered numerous challenges coding in javascript and html as it was my first time using these languages. Many thanks to Professor TIffany France, who also supplied a lot of <a href="https://github.com/tiffanyfrance/CAPP30239_FA22">reference code</a>, as well as Sandy Ng for their patient guidance throughout this process!</p>
+       
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="d3-color-legend.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src="line_temp.js"></script>
+    <script src="beeswarm_temp.js"></script>
+    <script src="line_year_temp.js"></script>
+    <script src="heat_map_temp.js"></script>
+    <script src="heat_map_temp_decade.js"></script>
+    <script src="heat_map.js"></script>
+    <script src="heat_map_decade.js"></script>
+    <script src="line_rain.js"></script>
+    <script src="line_year_rain.js"></script>
+    <script src="box_plot_decade.js"></script>
+    <script src="box_plot.js"></script>
+</body>
+</html>
